@@ -33,16 +33,18 @@
 % ---------------------------------------------------------------------------
 \usetheme{AState}
 
-\setAStateFooter{Wimpy et al.: MPSA 2026}
+\setAStateFooter{Junqueira et al.: Contemporary Trends in Political Methodology}
 \setAStateLogo{astate.png}
 
 % ---------------------------------------------------------------------------
 % Metadata
 % ---------------------------------------------------------------------------
-\title{Contemporary Trends in Political Methodology}
-\subtitle{}
+% Smaller title font so it fits on one line
+\setbeamerfont{title}{size=\large, series=\bfseries}
 
-\author[Junqueira, Kockaya, Webb, Whitten \& Wimpy]{%
+\title{Contemporary Trends in Political Methodology}
+\subtitle{\vspace{0.8em}}  % invisible subtitle adds space between title and authors
+\author[]{%
   \authorblock{Andrea Junqueira}{Arkansas State University}\\[0.1em]
   \authorblock{Leon Kockaya}{Texas A\&M University}\\[0.1em]
   \authorblock{Clayton Webb}{University of Kansas}\\[0.1em]
@@ -51,16 +53,25 @@
 }
 
 \institute{}
-\date{April 24, 2026}
-\conference{83rd Annual MPSA Conference}
+\date{}        % suppress default date placement
+\conference{}  % suppress default conference placement
 
 % ---------------------------------------------------------------------------
 % Document
 % ---------------------------------------------------------------------------
 \begin{document}
 
+% Title slide with date + conference centered right of the author list
 \begin{frame}[plain]
   \titlepage
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=center, inner sep=0pt, align=center]
+      at ([xshift=3.5cm, yshift=0cm]current page.center) {%
+      \usebeamerfont{date}\usebeamercolor[fg]{date}%
+      \textit{83rd Annual MPSA Conference}\\[0.3em]
+      April 24, 2026%
+    };
+  \end{tikzpicture}
 \end{frame}
 
 % ---- Add your content below -----------------------------------------------
@@ -77,28 +88,6 @@
 
 \sectionframe{Thoughts / Questions?}
 
-\begin{frame}{Get in Touch}
-  \begin{columns}[c]
-    \begin{column}{0.42\textwidth}
-      \centering
-      \includegraphics[width=0.85\textwidth]{glp.png}
-    \end{column}
-    \begin{column}{0.55\textwidth}
-      \raggedleft
-      {\color{astatered}\faPaperPlane}\;%
-        \href{mailto:cwimpy@astate.edu}{cwimpy@astate.edu}\\[0.15em]
-      {\color{astatered}\aiDataverse}\;%
-        \href{https://dataverse.harvard.edu/dataverse/cwimpy}{@cwimpy}\\[0.15em]
-      {\color{astatered}\faGithub}\;%
-        \href{https://github.com/cwimpy}{@cwimpy}\\[0.15em]
-      {\color{astatered}\faLinkedin}\;%
-        \href{https://linkedin.com/in/cwimpy}{@cwimpy}\\[0.15em]
-      {\color{astatered}\faTwitter}\;%
-        \href{https://x.com/camwimpy}{@cwimpy}\\[0.15em]
-      {\color{astatered}\faOrcid}\;%
-        \href{https://orcid.org/0000-0002-1825-0097}{0000-0002-1825-0097}%
-    \end{column}
-  \end{columns}
-\end{frame}
+\sectionframe{Thank You!}
 
 \end{document}
