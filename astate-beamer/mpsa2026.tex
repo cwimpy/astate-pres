@@ -1,0 +1,104 @@
+%% mpsa2026.tex
+%% Contemporary Trends in Political Methodology
+%% 83rd Annual MPSA Conference — April 24, 2026
+%%
+%% COMPILE WITH:  make FILE=mpsa2026
+%%                or: xelatex mpsa2026.tex (run twice)
+
+\documentclass[aspectratio=169, 14pt]{beamer}
+
+% ---------------------------------------------------------------------------
+% Prompt font via fontspec (XeLaTeX/LuaLaTeX required — same engine as icons)
+% ---------------------------------------------------------------------------
+\usepackage{fontspec}
+\IfFontExistsTF{Prompt}{%
+  \setmainfont{Prompt}%
+  \setsansfont{Prompt}%
+}{}
+
+% ---------------------------------------------------------------------------
+% Icons  (require XeLaTeX or LuaLaTeX)
+% ---------------------------------------------------------------------------
+\usepackage{fontawesome5}
+\IfFontExistsTF{Academicons}{%
+  \newfontfamily\academiconsFont{Academicons}%
+  \newcommand{\aiDataverse}{{\academiconsFont\symbol{"E9F7}}}%
+}{%
+  \newcommand{\aiDataverse}{\textsc{dv}}%
+}
+\usepackage{hyperref}
+
+% ---------------------------------------------------------------------------
+% Theme
+% ---------------------------------------------------------------------------
+\usetheme{AState}
+
+\setAStateFooter{Wimpy et al.: MPSA 2026}
+\setAStateLogo{astate.png}
+
+% ---------------------------------------------------------------------------
+% Metadata
+% ---------------------------------------------------------------------------
+\title{Contemporary Trends in Political Methodology}
+\subtitle{}
+
+\author[Junqueira, Kockaya, Webb, Whitten \& Wimpy]{%
+  \authorblock{Andrea Junqueira}{Arkansas State University}\\[0.1em]
+  \authorblock{Leon Kockaya}{Texas A\&M University}\\[0.1em]
+  \authorblock{Clayton Webb}{University of Kansas}\\[0.1em]
+  \authorblock{Guy Whitten}{Texas A\&M University}\\[0.1em]
+  \authorblock{Cameron Wimpy}{Arkansas State University}%
+}
+
+\institute{}
+\date{April 24, 2026}
+\conference{83rd Annual MPSA Conference}
+
+% ---------------------------------------------------------------------------
+% Document
+% ---------------------------------------------------------------------------
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ---- Add your content below -----------------------------------------------
+
+\sectionframe{Introduction}
+
+\begin{frame}{Slide Title}
+  \begin{itemize}
+    \item Content here
+  \end{itemize}
+\end{frame}
+
+% ---- Closing ---------------------------------------------------------------
+
+\sectionframe{Thoughts / Questions?}
+
+\begin{frame}{Get in Touch}
+  \begin{columns}[c]
+    \begin{column}{0.42\textwidth}
+      \centering
+      \includegraphics[width=0.85\textwidth]{glp.png}
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      \raggedleft
+      {\color{astatered}\faPaperPlane}\;%
+        \href{mailto:cwimpy@astate.edu}{cwimpy@astate.edu}\\[0.15em]
+      {\color{astatered}\aiDataverse}\;%
+        \href{https://dataverse.harvard.edu/dataverse/cwimpy}{@cwimpy}\\[0.15em]
+      {\color{astatered}\faGithub}\;%
+        \href{https://github.com/cwimpy}{@cwimpy}\\[0.15em]
+      {\color{astatered}\faLinkedin}\;%
+        \href{https://linkedin.com/in/cwimpy}{@cwimpy}\\[0.15em]
+      {\color{astatered}\faTwitter}\;%
+        \href{https://x.com/camwimpy}{@cwimpy}\\[0.15em]
+      {\color{astatered}\faOrcid}\;%
+        \href{https://orcid.org/0000-0002-1825-0097}{0000-0002-1825-0097}%
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}
