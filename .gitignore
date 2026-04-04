@@ -10,6 +10,7 @@
 *.fls
 *.synctex.gz
 missfont.log
+mfput.log
 
 # Build output (uncomment to track PDFs)
 # *.pdf

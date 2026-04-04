@@ -1,0 +1,25 @@
+%% AState Beamer — Quarto header includes
+%% Loaded automatically by the astate-beamer extension.
+
+% Prompt font (graceful fallback if not installed)
+\IfFontExistsTF{Prompt}{%
+  \setmainfont{Prompt}%
+  \setsansfont{Prompt}%
+}{}
+
+% Icons (fontawesome5 is available via system TeX Live 2026 v5.15.4)
+\usepackage{fontawesome5}
+
+% Isolated academicons loading — the academicons LaTeX package corrupts
+% fontspec encodings under XeLaTeX, so we load the font directly.
+\IfFontExistsTF{Academicons}{%
+  \newfontfamily\academiconsFont{Academicons}%
+  \newcommand{\aiDataverse}{{\academiconsFont\symbol{"E9F7}}}%
+}{%
+  \newcommand{\aiDataverse}{\textsc{dv}}%
+}
+
+% Override Pandoc's default section page with our red section break
+\AtBeginSection{%
+  \sectionframe{\insertsection}%
+}
