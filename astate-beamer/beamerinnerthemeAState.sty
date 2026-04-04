@@ -1,0 +1,193 @@
+%% beamerinnerthemeAState.sty
+%% Inner theme for the Arkansas State University Beamer theme
+%% Mirrors the astate-revealjs SCSS theme
+
+\ProvidesPackage{beamerinnerthemeAState}[2025/01/01 v1.0 AState Inner Theme]
+
+\RequirePackage{tikz}
+
+\mode<presentation>
+
+% ---------------------------------------------------------------------------
+% \authorblock{Name}{Affiliation}
+%   Formats a single author entry on the title slide.
+%   Stack multiple authors with \\[0.4em] between them.
+%   Wrap everything in \author[Short et al.]{...} so the footer gets
+%   a clean short form.
+%
+%   Example:
+%     \author[Wimpy et al.]{%
+%       \authorblock{Cameron Wimpy}{Arkansas State University}\\[0.4em]
+%       \authorblock{Jane Smith}{University of Example}%
+%     }
+% ---------------------------------------------------------------------------
+% ---------------------------------------------------------------------------
+% \conference{Conference Name}
+%   Optional field displayed below the date on the title slide.
+%   If not set, nothing is shown.
+% ---------------------------------------------------------------------------
+\newcommand{\astateConference}{}
+\newcommand{\conference}[1]{\renewcommand{\astateConference}{#1}}
+
+\newcommand{\authorblock}[2]{%
+  {\usebeamerfont{author}\usebeamercolor[fg]{author}#1}%
+  \ifx&#2&\else%
+    \\[-0.1em]%
+    {\usebeamerfont{institute}\usebeamercolor[fg]{institute}#2}%
+  \fi%
+}
+
+% ---------------------------------------------------------------------------
+% Title page  (mirrors #title-slide in revealjs)
+%   - Full-width red bar at top
+%   - Left-aligned text
+%   - Red title, bold italic subtitle
+%   - Red author(s), gray institute + date
+%   - Logo (if set via \setAStateLogo) in bottom-right corner
+% ---------------------------------------------------------------------------
+\defbeamertemplate*{title page}{AState}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    % Logo in bottom-right corner of title slide (mirrors revealjs logo: placement)
+    \ifx\astateLogoPath\@empty\else
+      \node[anchor=south east, inner sep=10pt] at (current page.south east) {%
+        \includegraphics[height=1.1cm]{\astateLogoPath}%
+      };
+    \fi
+  \end{tikzpicture}%
+  \vskip0.6em%
+  % Title
+  \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{title}
+    \usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par
+  \end{beamercolorbox}%
+  \vskip0.3em%
+  % Subtitle
+  \ifx\insertsubtitle\@empty\else
+    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{subtitle}
+      \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+    \end{beamercolorbox}%
+    \vskip0.4em%
+  \fi
+  % Author(s) — supports plain text or \authorblock entries
+  \ifx\insertauthor\@empty\else
+    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{author}
+      \insertauthor\par
+    \end{beamercolorbox}%
+    \vskip0.3em%
+  \fi
+  % Institute (used when NOT using \authorblock)
+  \ifx\insertinstitute\@empty\else
+    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{institute}
+      \usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par
+    \end{beamercolorbox}%
+    \vskip0.2em%
+  \fi
+  % Date
+  \ifx\insertdate\@empty\else
+    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{date}
+      \usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par
+    \end{beamercolorbox}%
+  \fi
+  % Conference (optional — set via \conference{Name})
+  \ifx\astateConference\@empty\else
+    \vskip0.15em
+    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{date}
+      \usebeamerfont{date}\usebeamercolor[fg]{date}\textit{\astateConference}\par
+    \end{beamercolorbox}%
+  \fi
+}
+
+% ---------------------------------------------------------------------------
+% Itemize bullets
+%   Level 1: » (guillemotright, U+00BB) in astatered
+%   Level 2: › (guilsinglright, U+203A) in astatered
+%   Level 3: · in astatered
+% ---------------------------------------------------------------------------
+\setbeamertemplate{itemize item}{%
+  \textcolor{astatered}{\guillemotright}%
+}
+\setbeamertemplate{itemize subitem}{%
+  \textcolor{astatered}{\guilsinglright}%
+}
+\setbeamertemplate{itemize subsubitem}{%
+  \textcolor{astatered}{\textperiodcentered}%
+}
+
+% Provide fallback macros if T1/textcomp glyphs are unavailable
+\providecommand{\guillemotright}{\ensuremath{\gg}}
+\providecommand{\guilsinglright}{\ensuremath{>}}
+
+% ---------------------------------------------------------------------------
+% Enumerate labels  (red bold numbers, matching the revealjs counter style)
+% ---------------------------------------------------------------------------
+\setbeamertemplate{enumerate item}{%
+  \textcolor{astatered}{\bfseries\insertenumlabel.}%
+}
+\setbeamertemplate{enumerate subitem}{%
+  \textcolor{astatered}{\bfseries\insertsubenumlabel.}%
+}
+\setbeamertemplate{enumerate subsubitem}{%
+  \textcolor{astatered}{\bfseries\insertsubsubenumlabel.}%
+}
+
+% ---------------------------------------------------------------------------
+% Blocks  (clean, with colored title bar)
+% ---------------------------------------------------------------------------
+\setbeamertemplate{block begin}{%
+  \vskip0.3em
+  \begin{beamercolorbox}[wd=\textwidth, dp=0.3em, ht=1.8em,
+                         leftskip=0.6em, rightskip=0.6em]{block title}%
+    \usebeamerfont{block title}\insertblocktitle
+  \end{beamercolorbox}%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\textwidth, sep=0.5em,
+                         leftskip=0.1em, rightskip=0.1em]{block body}%
+    \usebeamerfont{block body}%
+}
+\setbeamertemplate{block end}{%
+  \end{beamercolorbox}%
+  \vskip0.2em
+}
+
+\setbeamertemplate{block alerted begin}{%
+  \vskip0.3em
+  \begin{beamercolorbox}[wd=\textwidth, dp=0.3em, ht=1.8em,
+                         leftskip=0.6em, rightskip=0.6em]{block title alerted}%
+    \usebeamerfont{block title alerted}\insertblocktitle
+  \end{beamercolorbox}%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\textwidth, sep=0.5em,
+                         leftskip=0.1em, rightskip=0.1em]{block body alerted}%
+    \usebeamerfont{block body alerted}%
+}
+\setbeamertemplate{block alerted end}{%
+  \end{beamercolorbox}%
+  \vskip0.2em
+}
+
+\setbeamertemplate{block example begin}{%
+  \vskip0.3em
+  \begin{beamercolorbox}[wd=\textwidth, dp=0.3em, ht=1.8em,
+                         leftskip=0.6em, rightskip=0.6em]{block title example}%
+    \usebeamerfont{block title example}\insertblocktitle
+  \end{beamercolorbox}%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\textwidth, sep=0.5em,
+                         leftskip=0.1em, rightskip=0.1em]{block body example}%
+    \usebeamerfont{block body example}%
+}
+\setbeamertemplate{block example end}{%
+  \end{beamercolorbox}%
+  \vskip0.2em
+}
+
+% ---------------------------------------------------------------------------
+% Theorem / proof titles use the block title color
+% ---------------------------------------------------------------------------
+\setbeamertemplate{theorem begin}{%
+  \begin{\inserttheoremblockenv}{\inserttheoremname\inserttheorempunctuation\space\inserttheoremaddition}%
+}
+\setbeamertemplate{theorem end}{%
+  \end{\inserttheoremblockenv}%
+}
+
+\mode<all>

@@ -1,0 +1,28 @@
+# LaTeX auxiliary files
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+missfont.log
+
+# Build output (uncomment to track PDFs)
+# *.pdf
+
+# Quarto / revealjs build artifacts
+*_files/
+*.html
+.quarto/
+
+# R
+.Rhistory
+.Rproj.user/
+.Rproj 2.user/
+
+# macOS
+.DS_Store

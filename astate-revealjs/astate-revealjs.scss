@@ -1,0 +1,401 @@
+/*-- scss:defaults --*/
+
+// Theme colors
+$theme-darkblue: #01364C;
+$theme-red: #cc092f;
+$bullet-color: #cc092f;
+$footer-color: #333333; // Dark grey for footer
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+$font-family-sans-serif: 'Prompt', sans-serif !default;
+$presentation-heading-font: 'Prompt', sans-serif !default;
+$presentation-font-size-root: 40px !default;
+$code-block-font-size: 0.8em !default;
+
+// Colors
+$body-bg: #F9FAFB !default; // Light gray background
+$body-color: #000000 !default; // Black main text
+$code-block-bg: #FFFFFF !default;
+$code-bg: #FFFFFF !default;
+$link-color: $theme-red !default; // Links in $theme-red
+$presentation-heading-color: #000000 !default; // Headings in black
+
+// Headings
+$presentation-h1-font-size: 2.5em !default;
+$presentation-h2-font-size: 2em !default;
+$presentation-heading-font-weight: 700 !default; // Bold headings
+
+/*-- scss:rules --*/
+
+// Title slide
+#title-slide {
+  text-align: left;
+  border-top: 20px solid $theme-red;
+  padding-top: 1.2em;
+
+  .title {
+    color: $theme-red; // Dominant color
+    font-size: 1.8em; // Larger title
+    font-weight: 700; // Bold title
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    color: #000000; // Black subtitle
+    font-style: italic;
+    margin-top: 0em;
+    font-size: 48px; // Larger subtitle
+    font-weight: bold;
+  }
+
+  .institute,
+  .quarto-title-affiliation,
+  .quarto-title-author-email {
+    font-style: italic;
+    color: #7F7F7F; // Gray for affiliations
+    font-size: 0.8em;
+  }
+
+  .author,
+  .quarto-title-author-name {
+    color: $theme-red; // Dominant color
+    font-size: 1.1em;
+  }
+
+  .quarto-title-authors {
+    display: flex;
+    justify-content: left;
+
+    .quarto-title-author {
+      padding-left: 0em;
+      padding-right: 0em;
+      width: 100%;
+    }
+  }
+
+  // Date styling
+  .date {
+    color: #7F7F7F;
+    font-size: 0.8em;
+  }
+
+  // ORCID iD styling
+  .quarto-title-author-orcid {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8em;
+    color: $theme-red; // Matches author color
+    margin-top: 0.5em;
+
+    .ai-orcid {
+      font-size: 16px; // Matches logo size
+      margin-right: 0.3em;
+      color: $theme-red; // Matches author color
+    }
+
+    a {
+      color: $theme-red;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Footer styling
+.reveal .slide footer {
+  color: $footer-color; // Dark grey
+  font-size: 0.7em;
+}
+
+// Speaker notes (hide in main slide view)
+.reveal .slide aside.notes {
+  display: none !important; // Hide notes in main view
+}
+
+// Footnote container (override for footnotes only)
+.reveal .slide aside.footnotes {
+  display: block !important; // Ensure footnotes remain visible
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 0.7em;
+  color: #6f6f6f;
+}
+
+// Attribution styling (sideways text)
+.reveal .attribution {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+  font-size: 0.7em; // Matches footnote size
+  color: #6f6f6f; // Matches footnote color
+  opacity: 0.8;
+}
+
+// Custom fragment effect (blur)
+.reveal .slides section .fragment.blur {
+  filter: blur(5px);
+}
+.reveal .slides section .fragment.blur.visible {
+  filter: none;
+}
+
+// Custom bullet styles for unordered lists
+.reveal ul {
+  list-style-type: none;
+  padding-left: 20px;
+
+  > li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 1.5em;
+
+    &:before {
+      content: "\00BB"; // Unicode double chevron (»)
+      font-family: $font-family-sans-serif; // Use Prompt font
+      color: $bullet-color;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    // Second-level unordered lists
+    ul {
+      list-style-type: none;
+      padding-left: 20px;
+
+      li {
+        font-size: 0.9em; // Smaller font for second-level items
+        padding-left: 1.5em;
+
+        &:before {
+          content: "\203A"; // Unicode single chevron (›)
+          font-family: $font-family-sans-serif; // Use Prompt font
+          color: $bullet-color;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+    }
+  }
+}
+
+// Custom numbering for ordered lists
+.reveal ol {
+  counter-reset: ol;
+  list-style-type: none !important;
+  padding-left: 20px;
+
+  > li {
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 1.5em;
+    list-style-type: none !important;
+
+    &:before {
+      counter-increment: ol;
+      content: counter(ol) ". ";
+      color: $bullet-color;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    // Second-level ordered lists
+    ol {
+      list-style-type: none;
+      padding-left: 20px;
+
+      li {
+        font-size: 0.9em; // Smaller font for second-level items
+        padding-left: 1.5em;
+
+        &:before {
+          counter-increment: ol;
+          content: counter(ol) ". ";
+          color: $bullet-color;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+// Remove bullets/numbers for specific contexts
+.reveal .footnotes ul,
+.reveal .footnotes ol,
+.reveal .panel-tabset ul,
+.reveal .panel-tabset ol,
+.reveal .tabset-margin-container ul,
+.reveal .tabset-margin-container ol {
+  list-style-type: none;
+  padding-left: 0;
+
+  li {
+    font-size: inherit !important; // Ensure no font-size override in these contexts
+    padding-left: 0 !important;
+    position: static !important;
+    list-style-type: none !important;
+
+    &:before {
+      content: none !important;
+    }
+  }
+}
+
+// Footnote styles (fix for inline superscript and content)
+.reveal .footnotes {
+  font-size: 0.7em;
+  margin-top: 1.5em;
+  color: #6f6f6f;
+
+  ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+
+    li {
+      margin-bottom: 0.4em;
+      padding-left: 0;
+      position: static;
+    }
+  }
+}
+
+// Ensure footnote superscript stays inline
+.reveal .slide sup {
+  display: inline !important;
+  vertical-align: super;
+  font-size: 0.7em;
+  margin-left: 2px;
+}
+
+.reveal .slide sup a {
+  display: inline !important;
+  color: $theme-red;
+  text-decoration: none;
+}
+
+// Inline footnote content (e.g., for hover or custom rendering)
+.reveal .slide .footnote {
+  display: inline !important;
+  font-size: 0.7em;
+  color: #6f6f6f;
+  vertical-align: super;
+}
+
+// Remove bullets before headings in tabsets
+.reveal .panel-tabset h3,
+.reveal .panel-tabset h4,
+.reveal .panel-tabset h5,
+.reveal .panel-tabset h6,
+.reveal .tabset-margin-container h3,
+.reveal .quarto-layout-panel h3 {
+  &:before {
+    content: none !important;
+  }
+}
+
+// Heading styles
+.reveal h1 {
+  color: #000000; // Black titles
+  font-weight: 700;
+}
+
+.reveal h2 {
+  font-weight: 700; // Bold
+  font-size: 1.4em;
+  color: #000000; // Black titles
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background-color: $theme-red;
+    margin-top: 0.15em;
+  }
+}
+
+.reveal h3 {
+  font-style: italic;
+  font-weight: 700; // Bold
+  font-size: 0.95em;
+  color: #000000; // Black titles
+}
+
+.reveal h4 {
+  font-weight: 700; // Bold
+  margin-top: 1.25em;
+  color: #000000; // Black titles
+}
+
+// Blockquote styling
+.reveal blockquote {
+  border-left: 5px solid $theme-red;
+  box-shadow: none;
+  padding-left: 15px;
+  font-style: italic;
+}
+
+// Code block styling
+.reveal pre {
+  border-left: 4px solid $theme-red;
+  border-radius: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  background: #FFFFFF;
+  padding: 0.6em 1em;
+}
+
+.reveal code {
+  background: #f0f0f0;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.reveal pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+// Aside / marginal note styling
+.reveal .slide aside:not(.notes):not(.footnotes) {
+  border-left: 3px solid $theme-red;
+  padding-left: 10px;
+  color: #6f6f6f;
+}
+
+// Section break slides (only when they have a colored background)
+.reveal .slides section.center[data-background-color] {
+  h1 {
+    color: #FFFFFF;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 6px;
+      background-color: rgba(255, 255, 255, 0.6);
+      margin: 0.3em auto 0;
+    }
+  }
+}
+
+// Link hover effect
+.reveal a:hover {
+  color: darken(#cc092f, 10%);
+  text-decoration: underline;
+}

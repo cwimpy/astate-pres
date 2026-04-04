@@ -1,0 +1,65 @@
+%% beamerthemeAState.sty
+%% Main theme file for the Arkansas State University Beamer theme
+%%
+%% Mirrors the visual design of the astate-revealjs Quarto theme:
+%%   - Colors:  dark navy (#01364C) + red (#CC092F) on light gray (#F9FAFB)
+%%   - Font:    Prompt (or Source Sans Pro / Helvetica fallback)
+%%   - Layout:  red top bar on title slide, red underline on frame titles,
+%%              red » / › bullets, red numbered list labels, clean footer
+%%
+%% USAGE
+%% -----
+%%   \usetheme{AState}
+%%
+%% Optional setup commands (call after \usetheme):
+%%   \setAStateFooter{Wimpy: EAC Data Summit}   % custom footer text
+%%   \setAStateLogo{astate.png}                  % logo in footer + title slide
+%%
+%% For Prompt font (requires XeLaTeX or LuaLaTeX + font installed):
+%%   \usepackage{fontspec}
+%%   \setmainfont{Prompt}
+%%   \setsansfont{Prompt}
+%%
+%% MULTIPLE CO-AUTHORS
+%% -------------------
+%%   Use \authorblock{Name}{Affiliation} for each author, separated by \\[0.4em]:
+%%   \author[Wimpy et al.]{%
+%%     \authorblock{Cameron Wimpy}{Arkansas State University}\\[0.4em]
+%%     \authorblock{Co-Author Name}{Another University}%
+%%   }
+%%   The optional [short form] is shown in the footer.
+%%
+%% ICONS  (fontawesome5 + academicons — both work with pdfLaTeX)
+%% -----
+%%   \usepackage{fontawesome5}   % \faPaperPlane, \faGithub, \faLinkedin, \faTwitter
+%%   \usepackage{academicons}    % \aiOrcid, \aiDataverse
+%%
+%% SECTION BREAKS (red background, white text)
+%% -------------------------------------------
+%%   \sectionframe{My Section Title}          % standalone frame
+%%   \begin{astateredframe}...\end{astateredframe}
+%%
+%% ---------------------------------------------------------------------------
+
+\ProvidesPackage{beamerthemeAState}[2025/01/01 v1.0 Arkansas State University Beamer Theme]
+
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{calc}
+
+\mode<presentation>
+
+\usecolortheme{AState}
+\usefonttheme{AState}
+\useinnertheme{AState}
+\useoutertheme{AState}
+
+% No navigation clutter
+\setbeamertemplate{navigation symbols}{}
+
+% Slightly more breathing room in items
+\setlength{\itemsep}{4pt}
+\setlength{\parskip}{4pt}
+
+\mode<all>

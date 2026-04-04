@@ -1,0 +1,70 @@
+%% beamerfontthemeAState.sty
+%% Font theme for the Arkansas State University Beamer theme
+%% Mirrors the astate-revealjs SCSS theme (Prompt font family)
+
+\ProvidesPackage{beamerfontthemeAState}[2025/01/01 v1.0 AState Font Theme]
+
+\mode<presentation>
+
+% ---------------------------------------------------------------------------
+% Font family
+% ---------------------------------------------------------------------------
+% The template.tex loads fontspec + Prompt (XeLaTeX/LuaLaTeX).
+% If compiling with pdfLaTeX (no fontspec), fall back to Source Sans Pro
+% or Helvetica so the presentation still looks clean.
+% ---------------------------------------------------------------------------
+\usepackage{iftex}
+\ifPDFTeX
+  \IfFileExists{sourcesanspro.sty}{%
+    \RequirePackage[T1]{fontenc}%
+    \RequirePackage[default]{sourcesanspro}%
+  }{%
+    \RequirePackage[T1]{fontenc}%
+    \RequirePackage[scaled=0.95]{helvet}%
+    \renewcommand\familydefault{\sfdefault}%
+  }
+\else
+  % XeLaTeX/LuaLaTeX: fontspec + Prompt loaded in the document preamble.
+  % Ensure Beamer uses the sans-serif family set by fontspec.
+  \usefonttheme{professionalfonts}
+\fi
+
+% ---------------------------------------------------------------------------
+% Beamer font assignments (matching revealjs sizes/weights)
+% ---------------------------------------------------------------------------
+
+% Title slide
+\setbeamerfont{title}{size=\Large, series=\bfseries}
+\setbeamerfont{subtitle}{size=\large, series=\bfseries, shape=\itshape}
+\setbeamerfont{author}{size=\small, series=\bfseries}
+\setbeamerfont{institute}{size=\footnotesize, shape=\itshape}
+\setbeamerfont{date}{size=\small}
+
+% Frame title  (h2 equivalent — bold, then red rule)
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\normalsize, series=\bfseries, shape=\itshape}
+
+% Section / subsection in headline/TOC
+\setbeamerfont{section in head/foot}{size=\tiny}
+\setbeamerfont{subsection in head/foot}{size=\tiny}
+\setbeamerfont{section in toc}{series=\bfseries}
+\setbeamerfont{subsection in toc}{size=\small}
+
+% Footer
+\setbeamerfont{footline}{size=\tiny}
+
+% Blocks
+\setbeamerfont{block title}{series=\bfseries, size=\normalsize}
+\setbeamerfont{block title alerted}{series=\bfseries, size=\normalsize}
+\setbeamerfont{block title example}{series=\bfseries, size=\normalsize}
+
+% Items
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\small}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\footnotesize}
+
+% Caption
+\setbeamerfont{caption}{size=\small}
+\setbeamerfont{caption name}{series=\bfseries, size=\small}
+
+\mode<all>
