@@ -32,8 +32,9 @@
 \newcommand{\authorblock}[2]{%
   {\usebeamerfont{author}\usebeamercolor[fg]{author}#1}%
   \ifx&#2&\else%
-    \\[-0.1em]%
-    {\usebeamerfont{institute}\usebeamercolor[fg]{institute}#2}%
+    \\[0.05em]%
+    {\usebeamerfont{institute}\usebeamercolor[fg]{institute}%
+     \linespread{0.82}\selectfont #2}%
   \fi%
 }
 
@@ -68,36 +69,33 @@
     \vskip0.3em%
   \fi
   \vskip0.4em%
-  % Author(s) on the left, date + conference centered on the right
-  \noindent
-  \begin{minipage}[t]{0.45\textwidth}
-    % Author(s) — supports plain text or \authorblock entries
-    \ifx\insertauthor\@empty\else
-      \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{author}
-        \insertauthor\par
-      \end{beamercolorbox}%
-    \fi
-    % Institute (used when NOT using \authorblock)
-    \ifx\insertinstitute\@empty\else
-      \vskip0.2em%
-      \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{institute}
-        \usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par
-      \end{beamercolorbox}%
-    \fi
-  \end{minipage}%
-  \begin{minipage}[t]{0.52\textwidth}
-    \vskip1.5em%
-    \centering
-    % Conference (optional — set via \conference{Name})
-    \ifx\astateConference\@empty\else
+  % Author(s) — full width so text doesn't wrap early
+  \ifx\insertauthor\@empty\else
+    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{author}
+      \insertauthor\par
+    \end{beamercolorbox}%
+  \fi
+  % Institute (used when NOT using \authorblock)
+  \ifx\insertinstitute\@empty\else
+    \vskip0.2em%
+    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{institute}
+      \usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par
+    \end{beamercolorbox}%
+  \fi
+  \vskip1.0em%
+  % Conference (optional — set via \conference{Name})
+  \ifx\astateConference\@empty\else
+    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, center]{date}
       \usebeamerfont{date}\usebeamercolor[fg]{date}\textit{\astateConference}\par
-      \vskip0.3em%
-    \fi
-    % Date
-    \ifx\insertdate\@empty\else
+    \end{beamercolorbox}%
+    \vskip0.3em%
+  \fi
+  % Date — centered
+  \ifx\insertdate\@empty\else
+    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, center]{date}
       \usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par
-    \fi
-  \end{minipage}%
+    \end{beamercolorbox}%
+  \fi
 }
 
 % ---------------------------------------------------------------------------
