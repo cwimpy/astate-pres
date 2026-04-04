@@ -67,33 +67,37 @@
     \end{beamercolorbox}%
     \vskip0.3em%
   \fi
-  % Author(s) — supports plain text or \authorblock entries
-  \ifx\insertauthor\@empty\else
-    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{author}
-      \insertauthor\par
-    \end{beamercolorbox}%
-    \vskip0.2em%
-  \fi
-  % Institute (used when NOT using \authorblock)
-  \ifx\insertinstitute\@empty\else
-    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{institute}
-      \usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par
-    \end{beamercolorbox}%
-    \vskip0.2em%
-  \fi
-  % Date
-  \ifx\insertdate\@empty\else
-    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{date}
-      \usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par
-    \end{beamercolorbox}%
-  \fi
-  % Conference (optional — set via \conference{Name})
-  \ifx\astateConference\@empty\else
-    \vskip0.15em
-    \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{date}
+  \vskip0.4em%
+  % Author(s) on the left, date + conference centered on the right
+  \noindent
+  \begin{minipage}[t]{0.45\textwidth}
+    % Author(s) — supports plain text or \authorblock entries
+    \ifx\insertauthor\@empty\else
+      \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{author}
+        \insertauthor\par
+      \end{beamercolorbox}%
+    \fi
+    % Institute (used when NOT using \authorblock)
+    \ifx\insertinstitute\@empty\else
+      \vskip0.2em%
+      \begin{beamercolorbox}[wd=\textwidth, sep=0pt, leftskip=0pt]{institute}
+        \usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par
+      \end{beamercolorbox}%
+    \fi
+  \end{minipage}%
+  \begin{minipage}[t]{0.52\textwidth}
+    \vskip1.5em%
+    \centering
+    % Conference (optional — set via \conference{Name})
+    \ifx\astateConference\@empty\else
       \usebeamerfont{date}\usebeamercolor[fg]{date}\textit{\astateConference}\par
-    \end{beamercolorbox}%
-  \fi
+      \vskip0.3em%
+    \fi
+    % Date
+    \ifx\insertdate\@empty\else
+      \usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par
+    \fi
+  \end{minipage}%
 }
 
 % ---------------------------------------------------------------------------
