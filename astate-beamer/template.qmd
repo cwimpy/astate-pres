@@ -3,6 +3,7 @@ title: "Title"
 subtitle: "Subtitle"
 author:
   - name: Cameron Wimpy
+    orcid: 0000-0002-2049-5229
     affiliations:
       - Arkansas State University
       - "Associate Professor and Chair, Government, Law & Policy"

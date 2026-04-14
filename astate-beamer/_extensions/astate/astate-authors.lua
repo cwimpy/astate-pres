@@ -78,9 +78,15 @@ function Meta(meta)
       -- Build affiliation lines
       local affil_lines = get_affiliations(author)
 
+      -- Optional ORCID iD — renders a clickable icon next to the name
+      local orcid = ""
+      if author.orcid then
+        orcid = pandoc.utils.stringify(author.orcid)
+      end
+
       local affil_str = table.concat(affil_lines, "\\\\\n    ")
       table.insert(blocks, string.format(
-        "\\authorblock{%s}{%%\n    %s%%\n  }", name, affil_str))
+        "\\authorblock[%s]{%s}{%%\n    %s%%\n  }", orcid, name, affil_str))
     end
 
     -- Build short author string (for footer)

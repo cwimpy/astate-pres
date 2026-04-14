@@ -29,12 +29,20 @@
 \newcommand{\astateConference}{}
 \newcommand{\conference}[1]{\renewcommand{\astateConference}{#1}}
 
-\newcommand{\authorblock}[2]{%
-  {\usebeamerfont{author}\usebeamercolor[fg]{author}#1}%
-  \ifx&#2&\else%
+% \authorblock[<orcid>]{Name}{Affiliation}
+%   The optional first argument is a bare ORCID iD (e.g. 0000-0002-2049-5229).
+%   When present, a clickable ORCID icon in brand red is rendered next to
+%   the author's name.  Requires fontawesome6 (\faOrcid) and hyperref.
+\newcommand{\authorblock}[3][]{%
+  {\usebeamerfont{author}\usebeamercolor[fg]{author}#2%
+    \ifx&#1&\else%
+      \,\href{https://orcid.org/#1}{\color{astatered}\faOrcid}%
+    \fi%
+  }%
+  \ifx&#3&\else%
     \\[0.05em]%
     {\usebeamerfont{institute}\usebeamercolor[fg]{institute}%
-     \linespread{0.82}\selectfont #2}%
+     \linespread{0.82}\selectfont #3}%
   \fi%
 }
 
