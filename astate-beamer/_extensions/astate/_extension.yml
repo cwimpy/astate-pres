@@ -15,3 +15,11 @@ contributes:
         - header.tex
       filters:
         - astate-authors.lua
+      # Ship the .sty theme files into the render dir so \usetheme{AState}
+      # finds them without the user needing TEXINPUTS tweaks.
+      format-resources:
+        - beamerthemeAState.sty
+        - beamercolorthemeAState.sty
+        - beamerfontthemeAState.sty
+        - beamerinnerthemeAState.sty
+        - beamerouterthemeAState.sty
