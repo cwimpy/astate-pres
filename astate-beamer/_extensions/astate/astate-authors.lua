@@ -107,6 +107,16 @@ function Meta(meta)
     local author_override = string.format(
       "\\AtBeginDocument{\\author[%s]{%%\n  %s%%\n}}", short, full)
     table.insert(header, pandoc.RawBlock('latex', author_override))
+
+    -- Expose the first author's ORCID as \astateOrcidID so the contact
+    -- slide (or any other slide) can reference it without duplicating
+    -- the literal iD in body text.
+    local first = authors[1]
+    if first and first.orcid then
+      local id = pandoc.utils.stringify(first.orcid)
+      table.insert(header, pandoc.RawBlock('latex',
+        string.format("\\renewcommand{\\astateOrcidID}{%s}", id)))
+    end
   end
 
   -- Date — preserve user's string format, prevent Quarto ISO reformatting

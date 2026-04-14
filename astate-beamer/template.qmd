@@ -109,8 +109,8 @@ This is an alerted block, using the red brand color.
 {\color{astatered}\aiDataverse}\; \href{https://dataverse.harvard.edu/dataverse/cwimpy}{@cwimpy}\\[0.15em]
 {\color{astatered}\faGithub}\; \href{https://github.com/cwimpy}{@cwimpy}\\[0.15em]
 {\color{astatered}\faLinkedin}\; \href{https://linkedin.com/in/cwimpy}{@cwimpy}\\[0.15em]
-{\color{astatered}\faTwitter}\; \href{https://x.com/camwimpy}{@cwimpy}\\[0.15em]
-{\color{astatered}\faOrcid}\; \href{https://orcid.org/0000-0002-1825-0097}{0000-0002-1825-0097}
+{\color{astatered}\faXTwitter}\; \href{https://x.com/camwimpy}{@cwimpy}\\[0.15em]
+\astateOrcid
 ```
 
 :::

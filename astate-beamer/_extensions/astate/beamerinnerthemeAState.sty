@@ -29,6 +29,18 @@
 \newcommand{\astateConference}{}
 \newcommand{\conference}[1]{\renewcommand{\astateConference}{#1}}
 
+% ---------------------------------------------------------------------------
+% \astateOrcidID  — first author's ORCID iD, populated by the Lua filter
+% \astateOrcid    — convenience: clickable icon + iD text, for contact slides
+% ---------------------------------------------------------------------------
+\newcommand{\astateOrcidID}{}
+\newcommand{\astateOrcid}{%
+  \ifx\astateOrcidID\empty\else
+    {\color{astatered}\faOrcid}\;%
+    \href{https://orcid.org/\astateOrcidID}{\astateOrcidID}%
+  \fi
+}
+
 % \authorblock[<orcid>]{Name}{Affiliation}
 %   The optional first argument is a bare ORCID iD (e.g. 0000-0002-2049-5229).
 %   When present, a clickable ORCID icon in brand red is rendered next to
