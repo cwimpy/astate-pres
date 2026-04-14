@@ -10,10 +10,11 @@ template.html            export-ignore
 template_files/          export-ignore
 _output/                 export-ignore
 
-# Don't ship third-party extensions to scaffold users — they'd get 5
-# unrelated packages.  Kept in the repo for dev convenience only.
+# Third-party Quarto extensions:
+#   - quarto-ext/fontawesome AND schochastics/academicons ship with the
+#     scaffold because the Get in Touch slide uses {{< fa ... >}} and
+#     {{< ai ... >}} shortcodes that require them.
+#   - The others are kept in the repo for dev convenience only.
 _extensions/EmilHvitfeldt/    export-ignore
 _extensions/kjhealy/          export-ignore
-_extensions/quarto-ext/       export-ignore
-_extensions/schochastics/     export-ignore
 _extensions/shafayetShafee/   export-ignore
