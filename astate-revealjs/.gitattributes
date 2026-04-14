@@ -4,9 +4,7 @@
 .claude/                 export-ignore
 .DS_Store                export-ignore
 .Rhistory                export-ignore
-.Rhistory\ 2             export-ignore
 .Rproj.user/             export-ignore
-.Rproj\ 2.user/          export-ignore
 astate-revealjs.Rproj    export-ignore
 template.html            export-ignore
 template_files/          export-ignore
