@@ -74,6 +74,7 @@ Both produce visually identical output from the same `.sty` theme files.
 - [ ] Test with 5 co-authors — may need to adjust title slide spacing
 - [ ] Add a "Get in Touch" helper command or environment to the theme
 - [ ] Install Prompt font system-wide for consistent typography
-- [ ] Package for A-State distribution
-  - [ ] Beamer: tagged GitHub releases with install instructions (clone or local TEXMF)
-  - [ ] Revealjs: publishable via `quarto add cwimpy/astate-pres/astate-revealjs`
+- [x] Package for A-State distribution (v0.2.0)
+  - [x] Beamer: `quarto use template cwimpy/astate-pres/astate-beamer`
+  - [x] Revealjs: `quarto use template cwimpy/astate-pres/astate-revealjs`
+- [ ] Align revealjs font stack with beamer (Inter body + Fraunces display)

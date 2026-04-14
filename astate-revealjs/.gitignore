@@ -1,0 +1,9 @@
+/.quarto/
+**/*.quarto_ipynb
+*_files/
+.Rhistory
+.Rhistory\ 2
+.Rproj.user/
+.Rproj\ 2.user/
+.DS_Store
+_output/

@@ -3,42 +3,22 @@ title: "Title"
 subtitle: "Subtitle"
 author:
   - name: Cameron Wimpy
-    orcid: "0000-0002-1825-0097"
-    url: "https://orcid.org/0000-0002-1825-0097"
+    orcid: 0000-0002-2049-5229
+    url: "https://orcid.org/0000-0002-2049-5229"
     affiliations:
       - id: astate
         name: Arkansas State University
       - ref: astate
-        name: Associate Professor and Chair of Government, Law & Policy
+        name: "Associate Professor and Chair, Government, Law & Policy"
       - ref: astate
-        name: Director of the Institute for Rural Initiatives
+        name: Director, Institute for Rural Initiatives
+date: "June 24, 2026"
+date-format: long
 format:
-  revealjs:
-    email-obfuscation: javascript
-    transition: fade
-    background-transition: fade
-    theme: [default, astate-revealjs.scss]
+  astate-revealjs:
     logo: astate.png
     footer: "Wimpy: EAC Data Summit"
-    incremental: true
-    scrollable: true
-    height: 900
-    width: 1600
-    embed-resources: false
-    chalkboard: true
-    css: custom.css
-    pointer:
-      color: "#cc092f"
-    slide-number: c/t 
-editor: visual
-date: "24 June, 2025" 
-date-format: long
-revealjs-plugins:
-  - pointer
 toc: false
-include-in-header:
-  - text: |
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 ---
 
 # *Research Question*
@@ -47,7 +27,7 @@ include-in-header:
 
 -   Bullet 1
 -   Bullet 2
-    -   Bull
+    -   Sub-bullet A
 
 ::: notes
 Speaker notes example.
@@ -81,7 +61,7 @@ content before the pause
 
 content after the pause
 
-## Smaller Text
+## Blockquote
 
 > His Majesty's Government view with favour the establishment in Palestine of a national home for the Jewish people, and will use their best endeavors to facilitate the achievement of this object, it being clearly understood that nothing shall be done which may prejudice the civil and religious rights of existing non-Jewish communities in Palestine or the rights and political status enjoyed by Jews in any other country.
 
@@ -115,7 +95,7 @@ Content for Tab B
 
 # A Section Break Slide {.center background-color="#cc092f"}
 
-# Thoughts/Questions? {style="text-align: center;"}
+# Thoughts / Questions? {style="text-align: center;"}
 
 ## Get in Touch
 
@@ -140,15 +120,15 @@ Content for Tab B
 
 <br>
 
-###### {{< fa brands linkedin size=2xl >}} [\@cwimpy](https://dataverse.harvard.edu/dataverse/cwimpy)
+###### {{< fa brands linkedin size=2xl >}} [\@cwimpy](https://linkedin.com/in/cwimpy)
 
 <br>
 
-###### {{< fa brands x-twitter size=2xl >}} [\@cwimpy](https://x.com/camwimpy)
+###### {{< fa brands x-twitter size=2xl >}} [\@camwimpy](https://x.com/camwimpy)
 
 <br>
 
-###### {{< ai orcid size=2xl >}} [ORCID iD](https://orcid.org/0000-0002-2049-5229)
+###### {{< ai orcid size=2xl >}} [0000-0002-2049-5229](https://orcid.org/0000-0002-2049-5229)
 :::
 ::::
 ::::::
