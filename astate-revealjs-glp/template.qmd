@@ -108,27 +108,27 @@ Content for Tab B
 
 :::: {.column width="50%"}
 ::: {style="text-align: right"}
-###### {{< fa paper-plane size=2xl >}} [cwimpy\@astate.edu](mailto:cwimpy@astate.edu)
+###### <i class="fa-solid fa-paper-plane fa-2xl"></i> &nbsp; [cwimpy\@astate.edu](mailto:cwimpy@astate.edu)
 
 <br>
 
-###### {{< ai dataverse size=2xl >}} [\@cwimpy](https://dataverse.harvard.edu/dataverse/cwimpy)
+###### <i class="ai ai-dataverse ai-2xl"></i> &nbsp; [\@cwimpy](https://dataverse.harvard.edu/dataverse/cwimpy)
 
 <br>
 
-###### {{< fa brands github size=2xl >}} [\@cwimpy](https://github.com/cwimpy)
+###### <i class="fa-brands fa-github fa-2xl"></i> &nbsp; [\@cwimpy](https://github.com/cwimpy)
 
 <br>
 
-###### {{< fa brands linkedin size=2xl >}} [\@cwimpy](https://linkedin.com/in/cwimpy)
+###### <i class="fa-brands fa-linkedin fa-2xl"></i> &nbsp; [\@cwimpy](https://linkedin.com/in/cwimpy)
 
 <br>
 
-###### {{< fa brands x-twitter size=2xl >}} [\@camwimpy](https://x.com/camwimpy)
+###### <i class="fa-brands fa-x-twitter fa-2xl"></i> &nbsp; [\@camwimpy](https://x.com/camwimpy)
 
 <br>
 
-###### {{< ai orcid size=2xl >}} [0000-0002-2049-5229](https://orcid.org/0000-0002-2049-5229)
+###### <i class="ai ai-orcid ai-2xl"></i> &nbsp; [0000-0002-2049-5229](https://orcid.org/0000-0002-2049-5229)
 :::
 ::::
 ::::::
