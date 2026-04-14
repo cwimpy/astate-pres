@@ -62,24 +62,28 @@
 }
 
 \defbeamertemplate*{footline}{AState}{%
-  \begin{beamercolorbox}[wd=\paperwidth, ht=2.4ex, dp=1.2ex,
-                         leftskip=0.8em, rightskip=0.8em]{footline}%
-    \usebeamerfont{footline}%
-    % Left: footer text
-    \astateFooter%
-    \hfill%
-    % Right: logo (small, matches revealjs footer) + slide number
-    \ifx\astateLogoPath\@empty\else
-      \raisebox{-0.5ex}{\includegraphics[height=2.2ex]{\astateLogoPath}}\hspace{0.5em}%
-    \fi
-    \insertframenumber{}/\inserttotalframenumber%
-    \hspace{0.4em}%
-  \end{beamercolorbox}%
-  % Thin red separation line above footer
-  \begin{tikzpicture}[overlay]
-    \draw[astatered, line width=0.4pt]
-      (0, 0) -- (\paperwidth, 0);
-  \end{tikzpicture}%
+  % Suppress footline on the title slide (frame 1): no slide number,
+  % no mini logo, no red rule — keeps the title page clean.
+  \ifnum\insertframenumber=1\relax\else
+    \begin{beamercolorbox}[wd=\paperwidth, ht=2.4ex, dp=1.2ex,
+                           leftskip=0.8em, rightskip=0.8em]{footline}%
+      \usebeamerfont{footline}%
+      % Left: footer text
+      \astateFooter%
+      \hfill%
+      % Right: logo (small, matches revealjs footer) + slide number
+      \ifx\astateLogoPath\@empty\else
+        \raisebox{-0.5ex}{\includegraphics[height=2.2ex]{\astateLogoPath}}\hspace{0.5em}%
+      \fi
+      \insertframenumber{}/\inserttotalframenumber%
+      \hspace{0.4em}%
+    \end{beamercolorbox}%
+    % Thin red separation line above footer
+    \begin{tikzpicture}[overlay]
+      \draw[astatered, line width=0.4pt]
+        (0, 0) -- (\paperwidth, 0);
+    \end{tikzpicture}%
+  \fi
 }
 
 % ---------------------------------------------------------------------------
