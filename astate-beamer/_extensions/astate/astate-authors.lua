@@ -89,7 +89,8 @@ function Meta(meta)
         "\\authorblock[%s]{%s}{%%\n    %s%%\n  }", orcid, name, affil_str))
     end
 
-    -- Build short author string (for footer)
+    -- Build short author string (used only if the YAML `footer:` isn't set;
+    -- our theme's \setAStateFooter usually overrides this anyway).
     local short
     if #short_names <= 2 then
       short = table.concat(short_names, " \\& ")
@@ -98,14 +99,14 @@ function Meta(meta)
     end
 
     local full = table.concat(blocks, "\\\\[0.3em]\n  ")
-    local author_cmd = string.format(
-      "\\author[%s]{%%\n  %s%%\n}", short, full)
 
-    table.insert(header, pandoc.RawBlock('latex', author_cmd))
-
-    -- Clear author metadata so Quarto's template doesn't also emit \author
-    meta.author = nil
-    meta['by-author'] = nil
+    -- Quarto's template emits its own \author{<first-author name>} from
+    -- by-author, which would overwrite anything we set earlier.  We
+    -- re-declare \author via \AtBeginDocument so our \authorblock calls
+    -- are the ones the title page renders.
+    local author_override = string.format(
+      "\\AtBeginDocument{\\author[%s]{%%\n  %s%%\n}}", short, full)
+    table.insert(header, pandoc.RawBlock('latex', author_override))
   end
 
   -- Date — preserve user's string format, prevent Quarto ISO reformatting
