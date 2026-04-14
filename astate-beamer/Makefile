@@ -14,7 +14,16 @@
 #
 # Requires: xelatex (fontspec + fontawesome6) and/or quarto.
 
-FILE    ?= template
+# Auto-detect the source file:
+#   - if exactly one .qmd / .tex exists in this directory, use it
+#   - otherwise fall back to "template" (override with `make FILE=talk`)
+SRC_FILES := $(wildcard *.qmd) $(wildcard *.tex)
+ifeq ($(words $(SRC_FILES)),1)
+  FILE ?= $(basename $(SRC_FILES))
+else
+  FILE ?= template
+endif
+
 ENGINE   = xelatex
 FLAGS    = -interaction=nonstopmode
 OUTDIR   = _output
