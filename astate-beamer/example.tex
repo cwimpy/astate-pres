@@ -1,25 +1,20 @@
-%% template.tex
-%% Example presentation using the AState Beamer theme
-%% Mirrors the structure and design of template.qmd (astate-revealjs)
+%% example.tex
+%% Example pure-LaTeX presentation using the AState Beamer theme.
+%% Mirrors template.qmd (the Quarto starter).
 %%
-%% COMPILE WITH:  xelatex template.tex  (required for fontawesome5 + academicons)
-%%                Run twice for correct cross-references / slide count.
+%% COMPILE WITH:  make FILE=example tex
+%%   — or directly:  TEXINPUTS=.:_extensions/astate: xelatex example.tex  (run twice)
 %%
-%% LOGOS:  copy astate.png and glp.png into this directory, then
-%%         uncomment \setAStateLogo below.
+%% Requires XeLaTeX (fontspec + fontawesome6 icons).
 
 \documentclass[aspectratio=169, 14pt]{beamer}
 
 % ---------------------------------------------------------------------------
-% Prompt font via fontspec (XeLaTeX/LuaLaTeX required — same engine as icons)
-%   If Prompt is not installed, remove the two \set*font lines; fontspec
-%   will fall back to the system default sans-serif.
+% Font selection (Inter body + Fraunces display) is handled by the AState
+% theme.  We only need fontspec loaded here so \IfFontExistsTF is available
+% for the Academicons probe below.
 % ---------------------------------------------------------------------------
 \usepackage{fontspec}
-\IfFontExistsTF{Prompt}{%
-  \setmainfont{Prompt}%
-  \setsansfont{Prompt}%
-}{}
 
 % ---------------------------------------------------------------------------
 % Icons  (require XeLaTeX or LuaLaTeX)

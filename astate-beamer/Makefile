@@ -1,34 +1,68 @@
 # Makefile for AState Beamer presentations
 #
 # Usage:
-#   make              — compile template.tex (two passes for cross-refs)
-#   make FILE=talk    — compile talk.tex instead
-#   make clean        — remove auxiliary files, keep the PDF
-#   make cleanall     — remove auxiliary files AND the PDF
+#   make                      — auto-detect source (prefers FILE.qmd, falls back to FILE.tex)
+#   make tex                  — force LaTeX path (uses xelatex)
+#   make qmd                  — force Quarto path (uses quarto render)
+#   make FILE=talk            — build talk.qmd (or talk.tex) into _output/talk.pdf
+#   make clean                — remove auxiliary files (keeps _output/)
+#   make cleanall             — remove auxiliary files AND _output/
 #
-# Requires: xelatex (for fontspec + fontawesome5 icons)
+# Output:
+#   All finished PDFs land in _output/.  Auxiliary files (aux, log, nav, etc.)
+#   are deleted after a successful build.
+#
+# Requires: xelatex (fontspec + fontawesome6) and/or quarto.
 
-FILE   ?= template
-ENGINE  = xelatex
-FLAGS   = -interaction=nonstopmode
+FILE    ?= template
+ENGINE   = xelatex
+FLAGS    = -interaction=nonstopmode
+OUTDIR   = _output
 
-# Auxiliary extensions that xelatex / beamer generate
+# Tell (Xe)LaTeX where to find the AState .sty files (they live inside the
+# Quarto extension so they ship correctly when the package is installed).
+EXTDIR   = _extensions/astate
+export TEXINPUTS := .:$(EXTDIR):$(TEXINPUTS)
+
+# Auxiliary extensions that xelatex / beamer / quarto leave behind
 AUX_EXT = aux log nav out snm toc vrb fdb_latexmk fls synctex.gz
 
-.PHONY: all clean cleanall
+.PHONY: all tex qmd clean cleanall
 
-all: $(FILE).pdf
+# --- Auto-detect: prefer .qmd if present, else fall back to .tex ------------
+all:
+	@if [ -f "$(FILE).qmd" ]; then \
+		$(MAKE) qmd; \
+	elif [ -f "$(FILE).tex" ]; then \
+		$(MAKE) tex; \
+	else \
+		echo "✗ Neither $(FILE).qmd nor $(FILE).tex found."; exit 1; \
+	fi
 
-$(FILE).pdf: $(FILE).tex $(wildcard *.sty) $(wildcard *.png)
+# --- LaTeX path -------------------------------------------------------------
+tex: $(FILE).tex
+	@mkdir -p $(OUTDIR)
 	$(ENGINE) $(FLAGS) $(FILE).tex
 	$(ENGINE) $(FLAGS) $(FILE).tex
+	@mv -f $(FILE).pdf $(OUTDIR)/
+	@rm -f $(addprefix $(FILE)., $(AUX_EXT))
 	@echo ""
-	@echo "✓ $(FILE).pdf is ready."
+	@echo "✓ $(OUTDIR)/$(FILE).pdf is ready."
 
+# --- Quarto path ------------------------------------------------------------
+qmd: $(FILE).qmd
+	@mkdir -p $(OUTDIR)
+	quarto render $(FILE).qmd --output-dir $(OUTDIR)
+	@rm -rf $(FILE)_files .quarto
+	@echo ""
+	@echo "✓ $(OUTDIR)/$(FILE).pdf is ready."
+
+# --- Housekeeping -----------------------------------------------------------
 clean:
 	rm -f $(addprefix $(FILE)., $(AUX_EXT))
-	@echo "✓ Auxiliary files removed. $(FILE).pdf kept."
+	rm -rf $(FILE)_files .quarto
+	@echo "✓ Auxiliary files removed. $(OUTDIR)/ kept."
 
 cleanall: clean
-	rm -f $(FILE).pdf
-	@echo "✓ $(FILE).pdf also removed."
+	rm -rf $(OUTDIR)
+	@echo "✓ $(OUTDIR)/ also removed."

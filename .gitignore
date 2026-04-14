@@ -20,6 +20,9 @@ mfput.log
 *.html
 .quarto/
 
+# Beamer build output directory (PDFs land here)
+_output/
+
 # R
 .Rhistory
 .Rproj.user/

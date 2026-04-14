@@ -10,9 +10,10 @@ Arkansas State University presentation templates — Beamer (LaTeX) and revealjs
 
 ## Architecture
 
-- `astate-beamer/` — LaTeX Beamer theme (5 `.sty` files) + templates (`.tex` and `.qmd`)
-- `astate-beamer/_extensions/astate/` — Quarto format extension for Beamer
-- `astate-revealjs/` — Quarto revealjs theme (SCSS + `_extensions/`)
+- `astate-beamer/_extensions/astate/` — Quarto format extension for Beamer. **All 5 `.sty` theme files live here** so they ship when the extension is installed via `quarto add` / `quarto use template`.
+- `astate-beamer/template.qmd` — Quarto starter (convention for `quarto use template`).
+- `astate-beamer/example.tex` — pure-LaTeX starter (alternate entry point). Built via `make FILE=example tex`. The Makefile sets `TEXINPUTS` so xelatex finds the `.sty` files inside `_extensions/astate/`.
+- `astate-revealjs/` — Quarto revealjs theme (SCSS + `_extensions/`). Not yet packaged as its own named extension.
 
 ### Beamer Theme Files
 
@@ -20,7 +21,7 @@ Arkansas State University presentation templates — Beamer (LaTeX) and revealjs
 |------|---------|
 | `beamerthemeAState.sty` | Main theme loader |
 | `beamercolorthemeAState.sty` | Brand colors (#CC092F red, #01364C navy, #F9FAFB light gray) |
-| `beamerfontthemeAState.sty` | Font assignments (Prompt via fontspec, with fallbacks) |
+| `beamerfontthemeAState.sty` | Font stack via fontspec: Inter (body) + Fraunces (display); Prompt as secondary fallback |
 | `beamerinnerthemeAState.sty` | Title page, bullets, blocks, `\authorblock`, `\conference` |
 | `beamerouterthemeAState.sty` | Frame title, footer, section breaks, `\sectionframe` |
 
@@ -60,7 +61,7 @@ Both produce visually identical output from the same `.sty` theme files.
 
 - **Must compile with XeLaTeX** (fontspec + fontawesome5 icons)
 - **Do NOT use `\usepackage{academicons}`** — it corrupts fontspec encodings under XeLaTeX. The Academicons font is loaded in isolation via `\newfontfamily`. See commit history for details.
-- **Prompt font** is not installed on this system; the theme gracefully falls back to the default sans-serif. Install Prompt from Google Fonts to use it.
+- **Fonts**: theme wants Inter (body) + Fraunces (display). Neither is installed on this system yet, so the theme falls back gracefully (Prompt if present, else system sans). Install both from Google Fonts to see the intended look.
 - Old fontawesome5 v5.7.0 files were backed up to `~/Library/texmf/fontawesome5-backup-v5.7.0/` — the system TeX Live 2026 v5.15.4 is used instead.
 - The Quarto extension sets `latex-auto-install: false` to prevent Quarto from interrupting compilation over non-fatal font warnings.
 
@@ -73,3 +74,6 @@ Both produce visually identical output from the same `.sty` theme files.
 - [ ] Test with 5 co-authors — may need to adjust title slide spacing
 - [ ] Add a "Get in Touch" helper command or environment to the theme
 - [ ] Install Prompt font system-wide for consistent typography
+- [ ] Package for A-State distribution
+  - [ ] Beamer: tagged GitHub releases with install instructions (clone or local TEXMF)
+  - [ ] Revealjs: publishable via `quarto add cwimpy/astate-pres/astate-revealjs`

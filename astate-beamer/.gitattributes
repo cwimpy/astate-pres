@@ -1,0 +1,10 @@
+# Files excluded from `quarto use template` scaffolds (kept in the repo for
+# development, but not shipped when a user scaffolds a new project).
+.gitignore        export-ignore
+.gitattributes    export-ignore
+.claude/          export-ignore
+.DS_Store         export-ignore
+Makefile          export-ignore
+README.md         export-ignore
+example.tex       export-ignore
+_output/          export-ignore

@@ -1,0 +1,107 @@
+%% beamerfontthemeAState.sty
+%% Font theme for the Arkansas State University Beamer theme
+%%
+%% Typography stack (XeLaTeX/LuaLaTeX):
+%%   Body / sans — Inter      (fallback: Prompt, then system default)
+%%   Display     — Fraunces   (used for title slide + frame titles;
+%%                             fallback: Inter, then main sans)
+%%
+%% Install from Google Fonts:
+%%   https://fonts.google.com/specimen/Inter
+%%   https://fonts.google.com/specimen/Fraunces
+
+\ProvidesPackage{beamerfontthemeAState}[2026/04/13 v1.1 AState Font Theme]
+
+\mode<presentation>
+
+% ---------------------------------------------------------------------------
+% Font family selection
+% ---------------------------------------------------------------------------
+\usepackage{iftex}
+\ifPDFTeX
+  % pdfLaTeX: no fontspec — graceful degradation to packaged fonts.
+  \IfFileExists{sourcesanspro.sty}{%
+    \RequirePackage[T1]{fontenc}%
+    \RequirePackage[default]{sourcesanspro}%
+  }{%
+    \RequirePackage[T1]{fontenc}%
+    \RequirePackage[scaled=0.95]{helvet}%
+    \renewcommand\familydefault{\sfdefault}%
+  }
+  % No separate display family under pdfLaTeX — use the main sans.
+  \newcommand{\astateDisplayFamily}{\sffamily}
+\else
+  % XeLaTeX / LuaLaTeX: load fontspec and select the stack.
+  \RequirePackage{fontspec}
+  \usefonttheme{professionalfonts}
+
+  % Main / body font — Inter, falling back to Prompt.
+  \IfFontExistsTF{Inter}{%
+    \setmainfont{Inter}%
+    \setsansfont{Inter}%
+  }{%
+    \IfFontExistsTF{Prompt}{%
+      \setmainfont{Prompt}%
+      \setsansfont{Prompt}%
+    }{}%
+  }
+
+  % Display font — Fraunces (with optical size + slight styling tweaks
+  % tuned for large titles).  Falls back to Inter, then to main sans.
+  \IfFontExistsTF{Fraunces}{%
+    \newfontfamily\astateDisplay{Fraunces}[%
+      Numbers       = Lining,
+      RawFeature    = {+opsz=144},%  soft-opticals optimized for display
+      LetterSpace   = -1.5,
+      Ligatures     = TeX,
+    ]%
+    \newcommand{\astateDisplayFamily}{\astateDisplay}%
+  }{%
+    \IfFontExistsTF{Inter}{%
+      \newfontfamily\astateDisplay{Inter}[Ligatures=TeX]%
+      \newcommand{\astateDisplayFamily}{\astateDisplay}%
+    }{%
+      \newcommand{\astateDisplayFamily}{\sffamily}%
+    }%
+  }
+\fi
+
+% ---------------------------------------------------------------------------
+% Beamer font assignments (matching revealjs sizes/weights)
+% ---------------------------------------------------------------------------
+
+% Title slide — display family (Fraunces) for title + subtitle
+\setbeamerfont{title}{family=\astateDisplayFamily, size=\Large, series=\bfseries}
+\setbeamerfont{subtitle}{family=\astateDisplayFamily, size=\large, series=\bfseries, shape=\itshape}
+\setbeamerfont{author}{size=\small, series=\bfseries}
+\setbeamerfont{institute}{size=\footnotesize, shape=\itshape}
+\setbeamerfont{date}{size=\small}
+
+% Frame title  (h2 equivalent — display family, bold, then red rule)
+\setbeamerfont{frametitle}{family=\astateDisplayFamily, size=\large, series=\bfseries}
+\setbeamerfont{framesubtitle}{family=\astateDisplayFamily, size=\normalsize, series=\bfseries, shape=\itshape}
+
+% Section / subsection in headline/TOC
+\setbeamerfont{section in head/foot}{size=\tiny}
+\setbeamerfont{subsection in head/foot}{size=\tiny}
+\setbeamerfont{section in toc}{series=\bfseries}
+\setbeamerfont{subsection in toc}{size=\small}
+
+% Footer
+\setbeamerfont{footline}{size=\tiny}
+
+% Blocks
+\setbeamerfont{block title}{series=\bfseries, size=\normalsize}
+\setbeamerfont{block title alerted}{series=\bfseries, size=\normalsize}
+\setbeamerfont{block title example}{series=\bfseries, size=\normalsize}
+
+% Items
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\small}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\footnotesize}
+
+% Caption
+\setbeamerfont{caption}{size=\small}
+\setbeamerfont{caption name}{series=\bfseries, size=\small}
+
+\mode<all>
