@@ -28,8 +28,9 @@ _output/
 .Rproj.user/
 .Rproj 2.user/
 
-# Claude Code workspace
+# Claude Code workspace (local only — not shipped to the repo)
 .claude/
+CLAUDE.md
 
 # macOS
 .DS_Store
