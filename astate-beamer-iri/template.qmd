@@ -1,0 +1,117 @@
+---
+title: "Title"
+subtitle: "Subtitle"
+author:
+  - name: Cameron Wimpy
+    orcid: 0000-0002-2049-5229
+    affiliations:
+      - Arkansas State University
+      - "Associate Professor and Chair, Government, Law & Policy"
+      - Director, Institute for Rural Initiatives
+date: "June 24, 2026"
+date-format: "MMMM D, YYYY"
+conference: "EAC Data Summit"
+footer: "Wimpy: EAC Data Summit"
+logo: iri.png
+format:
+  astate-beamer: default
+---
+
+## Test Slide 1
+
+-   Bullet 1
+-   Bullet 2
+    -   Sub-bullet A
+    -   Sub-bullet B
+
+::: notes
+Speaker notes example.
+:::
+
+## Test Slide 2
+
+1.  First Item
+2.  Second Item
+3.  Third Item
+
+## Test Slide 3 --- Two Columns
+
+:::: columns
+::: {.column width="48%"}
+Some text in column 1
+:::
+
+::: {.column width="48%"}
+Some text in column 2
+:::
+::::
+
+## Slide with a Pause
+
+Content before the pause.
+
+. . .
+
+Content after the pause.
+
+## Blockquote
+
+> His Majesty's Government view with favour the establishment in Palestine
+> of a national home for the Jewish people, and will use their best
+> endeavours to facilitate the achievement of this object, it being clearly
+> understood that nothing shall be done which may prejudice the civil and
+> religious rights of existing non-Jewish communities in Palestine...
+
+## Code Block
+
+```r
+# Example R code
+model <- lm(y ~ x1 + x2, data = df)
+summary(model)
+```
+
+## Blocks
+
+::: {.block}
+### Standard Block
+This mirrors a standard content block.
+:::
+
+::: {.alertblock}
+### Alert Block
+This is an alerted block, using the red brand color.
+:::
+
+## Footnotes
+
+-   Green[^1]
+-   Brown
+-   Purple
+
+[^1]: A cool color.
+
+# A Section Break Slide
+
+# Thoughts / Questions?
+
+## Get in Touch
+
+:::: columns
+::: {.column width="42%"}
+![](iri.png){fig-align="center"}
+:::
+
+::: {.column width="55%"}
+
+```{=latex}
+\raggedleft
+{\color{astatered}\faPaperPlane}\; \href{mailto:cwimpy@astate.edu}{cwimpy@astate.edu}\\[0.15em]
+{\color{astatered}\aiDataverse}\; \href{https://dataverse.harvard.edu/dataverse/cwimpy}{@cwimpy}\\[0.15em]
+{\color{astatered}\faGithub}\; \href{https://github.com/cwimpy}{@cwimpy}\\[0.15em]
+{\color{astatered}\faLinkedin}\; \href{https://linkedin.com/in/cwimpy}{@cwimpy}\\[0.15em]
+{\color{astatered}\faXTwitter}\; \href{https://x.com/camwimpy}{@cwimpy}\\[0.15em]
+\astateOrcid
+```
+
+:::
+::::

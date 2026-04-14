@@ -1,68 +1,42 @@
 # astate-pres
 
-Arkansas State University presentation templates for Beamer (LaTeX) and revealjs (Quarto).
+Arkansas State University presentation templates for **Beamer (LaTeX)** and
+**revealjs (Quarto)**, shipped as four installable Quarto extensions:
 
-## Beamer Theme
+| Template | Format | Branding | Install |
+|----------|--------|----------|---------|
+| `astate-beamer-glp`   | Beamer    | GLP (Government, Law & Policy)       | `quarto use template cwimpy/astate-pres/astate-beamer-glp` |
+| `astate-beamer-iri`   | Beamer    | IRI (Institute for Rural Initiatives)| `quarto use template cwimpy/astate-pres/astate-beamer-iri` |
+| `astate-revealjs-glp` | revealjs  | GLP                                   | `quarto use template cwimpy/astate-pres/astate-revealjs-glp` |
+| `astate-revealjs-iri` | revealjs  | IRI                                   | `quarto use template cwimpy/astate-pres/astate-revealjs-iri` |
 
-The `astate-beamer/` directory contains a complete Beamer theme matching the A-State brand.
+All four share the same typography (Inter body + Fraunces display), A-State
+brand colors (red `#CC092F`, navy `#01364C`), and author/ORCID/affiliation
+metadata handling. The `-iri` variants use `iri.png` as the footer logo and
+on the contact slide; the `-glp` variants use `astate.png` / `glp.png`.
 
-### Requirements
+## Usage
 
-- **XeLaTeX** (required for Prompt font + icon support)
-- [Prompt](https://fonts.google.com/specimen/Prompt) font installed (falls back to Source Sans Pro or Helvetica)
-- TeX Live 2024+ recommended (fontawesome5 v5.15+)
-
-### Quick Start
-
-```bash
-cd astate-beamer
-
-# Build the template (runs xelatex twice for cross-references)
-make
-
-# Build a different .tex file
-make FILE=mytalk
-
-# Clean up auxiliary files (.aux, .log, .nav, etc.), keep the PDF
-make clean
-
-# Clean everything including the PDF
-make cleanall
-```
-
-### Makefile Reference
-
-| Command | What it does |
-|---------|-------------|
-| `make` | Compile `template.tex` with two xelatex passes |
-| `make FILE=talk` | Compile `talk.tex` instead |
-| `make clean` | Remove auxiliary files, keep the PDF |
-| `make cleanall` | Remove auxiliary files and the PDF |
-
-The Makefile automatically rebuilds when any `.tex`, `.sty`, or `.png` file changes.
-
-### Creating a New Presentation
-
-1. Copy `template.tex` to a new file (e.g., `mytalk.tex`)
-2. Edit the metadata: `\title`, `\subtitle`, `\author`, `\date`, `\conference`
-3. Replace the example slides with your content
-4. Run `make FILE=mytalk`
-
-### Theme Commands
-
-| Command | Purpose |
-|---------|---------|
-| `\setAStateFooter{text}` | Custom footer text |
-| `\setAStateLogo{file.png}` | Logo in footer and title slide |
-| `\conference{Name}` | Conference or event name on title slide |
-| `\authorblock{Name}{Affiliation}` | Formatted author entry for title slide |
-| `\sectionframe{Title}` | Red background section break slide |
-
-## Revealjs Theme
-
-The `astate-revealjs/` directory contains the Quarto revealjs theme. Render with:
+After scaffolding, each template directory ships with a `Makefile`:
 
 ```bash
-cd astate-revealjs
-quarto render template.qmd
+make           # render to _output/
+make preview   # (revealjs) live-preview server
+make clean     # sweep aux files
+make cleanall  # also remove _output/
 ```
+
+See each subdirectory's `README.md` for template-specific details.
+
+## Requirements
+
+- **Quarto** ≥ 1.4
+- **XeLaTeX** for the Beamer variants (fontspec + fontawesome6)
+- Fonts: [Inter](https://fonts.google.com/specimen/Inter) and
+  [Fraunces](https://fonts.google.com/specimen/Fraunces) — revealjs pulls
+  from Google Fonts automatically; Beamer falls back gracefully if they
+  aren't installed system-wide.
+
+## License
+
+MIT. Arkansas State University brand marks belong to their respective owners.

@@ -10,10 +10,14 @@ Arkansas State University presentation templates — Beamer (LaTeX) and revealjs
 
 ## Architecture
 
-- `astate-beamer/_extensions/astate/` — Quarto format extension for Beamer. **All 5 `.sty` theme files live here** so they ship when the extension is installed via `quarto add` / `quarto use template`.
-- `astate-beamer/template.qmd` — Quarto starter (convention for `quarto use template`).
-- `astate-beamer/example.tex` — pure-LaTeX starter (alternate entry point). Built via `make FILE=example tex`. The Makefile sets `TEXINPUTS` so xelatex finds the `.sty` files inside `_extensions/astate/`.
-- `astate-revealjs/` — Quarto revealjs theme (SCSS + `_extensions/`). Not yet packaged as its own named extension.
+Four installable template variants at the repo root:
+
+- `astate-beamer-glp/` / `astate-beamer-iri/` — Beamer (LaTeX). Each has `_extensions/astate/` with the 5 `.sty` theme files, `template.qmd`, `example.tex`, `Makefile`, `README.md`.
+- `astate-revealjs-glp/` / `astate-revealjs-iri/` — revealjs (Quarto). Each has `_extensions/astate/` with the `.scss` theme, `template.qmd`, `Makefile`, `README.md`.
+
+The `-iri` variants differ only in using `iri.png` as the main logo (title slide + footer) and on the contact slide. `-glp` uses `astate.png` + `glp.png` (original behavior).
+
+All four share colors, fonts (Inter body + Fraunces display), and the author/ORCID/affiliation metadata handling.
 
 ### Beamer Theme Files
 

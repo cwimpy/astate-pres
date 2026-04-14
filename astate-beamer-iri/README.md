@@ -1,4 +1,4 @@
-# AState Beamer
+# AState Beamer — IRI
 
 A Beamer (LaTeX) presentation theme for Arkansas State University, packaged as a
 Quarto format extension. Matching visual design to the revealjs theme in
@@ -9,7 +9,7 @@ Quarto format extension. Matching visual design to the revealjs theme in
 ### As a new project (recommended)
 
 ```bash
-quarto use template cwimpy/astate-pres/astate-beamer
+quarto use template cwimpy/astate-pres/astate-beamer-iri
 ```
 
 This scaffolds a fresh Quarto project with `template.qmd`, the `_extensions/`
@@ -18,7 +18,7 @@ folder, and example logos.
 ### Into an existing project
 
 ```bash
-quarto add cwimpy/astate-pres/astate-beamer
+quarto add cwimpy/astate-pres/astate-beamer-iri
 ```
 
 Then add this to any `.qmd` front matter:

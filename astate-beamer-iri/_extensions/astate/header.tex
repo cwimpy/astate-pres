@@ -1,0 +1,22 @@
+%% AState Beamer — Quarto header includes
+%% Loaded automatically by the astate-beamer extension.
+
+% Fonts (Inter body + Fraunces display) are loaded by the AState theme
+% in beamerfontthemeAState.sty — no font setup needed here.
+
+% Icons (fontawesome6 — includes X/Twitter icon \faXTwitter)
+\usepackage{fontawesome6}
+
+% Isolated academicons loading — the academicons LaTeX package corrupts
+% fontspec encodings under XeLaTeX, so we load the font directly.
+\IfFontExistsTF{Academicons}{%
+  \newfontfamily\academiconsFont{Academicons}%
+  \newcommand{\aiDataverse}{{\academiconsFont\symbol{"E9F7}}}%
+}{%
+  \newcommand{\aiDataverse}{\textsc{dv}}%
+}
+
+% Override Pandoc's default section page with our red section break
+\AtBeginSection{%
+  \sectionframe{\insertsection}%
+}

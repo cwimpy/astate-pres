@@ -1,4 +1,4 @@
-# AState Revealjs
+# AState Revealjs — IRI
 
 A revealjs (Quarto) presentation theme for Arkansas State University, packaged
 as a Quarto format extension. Matching visual design to the Beamer theme in
@@ -9,7 +9,7 @@ as a Quarto format extension. Matching visual design to the Beamer theme in
 ### As a new project (recommended)
 
 ```bash
-quarto use template cwimpy/astate-pres/astate-revealjs
+quarto use template cwimpy/astate-pres/astate-revealjs-iri
 ```
 
 This scaffolds a fresh Quarto project with `template.qmd`, the `_extensions/`
@@ -18,7 +18,7 @@ folder, and example logos.
 ### Into an existing project
 
 ```bash
-quarto add cwimpy/astate-pres/astate-revealjs
+quarto add cwimpy/astate-pres/astate-revealjs-iri
 ```
 
 Then add this to any `.qmd` front matter:

@@ -1,0 +1,19 @@
+# Files excluded from `quarto use template` scaffolds.
+.gitignore               export-ignore
+.gitattributes           export-ignore
+.claude/                 export-ignore
+.DS_Store                export-ignore
+.Rhistory                export-ignore
+.Rproj.user/             export-ignore
+astate-revealjs.Rproj    export-ignore
+template.html            export-ignore
+template_files/          export-ignore
+_output/                 export-ignore
+
+# Don't ship third-party extensions to scaffold users — they'd get 5
+# unrelated packages.  Kept in the repo for dev convenience only.
+_extensions/EmilHvitfeldt/    export-ignore
+_extensions/kjhealy/          export-ignore
+_extensions/quarto-ext/       export-ignore
+_extensions/schochastics/     export-ignore
+_extensions/shafayetShafee/   export-ignore
