@@ -1,0 +1,91 @@
+%% beamercolorthemeAState.sty
+%% Color theme for the Arkansas State University Beamer theme
+%% Mirrors the astate-revealjs SCSS theme
+
+\ProvidesPackage{beamercolorthemeAState}[2025/01/01 v1.0 AState Color Theme]
+
+\mode<presentation>
+
+% ---------------------------------------------------------------------------
+% Brand colors (from astate-revealjs.scss)
+% ---------------------------------------------------------------------------
+\definecolor{astatedarkblue}{HTML}{01364C}
+\definecolor{astatered}{HTML}{CC092F}
+\definecolor{astatelightgray}{HTML}{F9FAFB}
+\definecolor{astatefootergray}{HTML}{333333}
+\definecolor{astategray}{HTML}{7F7F7F}
+\definecolor{astatemediumgray}{HTML}{6F6F6F}
+\definecolor{astatecodelightgray}{HTML}{F0F0F0}
+
+% ---------------------------------------------------------------------------
+% General palette
+% ---------------------------------------------------------------------------
+\setbeamercolor{normal text}{fg=black, bg=astatelightgray}
+\setbeamercolor{alerted text}{fg=astatered}
+\setbeamercolor{example text}{fg=astatedarkblue}
+\setbeamercolor{structure}{fg=astatedarkblue}
+
+% ---------------------------------------------------------------------------
+% Title slide
+% ---------------------------------------------------------------------------
+\setbeamercolor{title}{fg=astatered, bg=}
+\setbeamercolor{subtitle}{fg=black, bg=}
+\setbeamercolor{author}{fg=astatered, bg=}
+\setbeamercolor{institute}{fg=astategray, bg=}
+\setbeamercolor{date}{fg=astategray, bg=}
+
+% ---------------------------------------------------------------------------
+% Frame title
+% ---------------------------------------------------------------------------
+\setbeamercolor{frametitle}{fg=black, bg=astatelightgray}
+\setbeamercolor{framesubtitle}{fg=black, bg=astatelightgray}
+
+% ---------------------------------------------------------------------------
+% Items / lists
+% ---------------------------------------------------------------------------
+\setbeamercolor{item}{fg=astatered}
+\setbeamercolor{subitem}{fg=astatered}
+\setbeamercolor{subsubitem}{fg=astatered}
+\setbeamercolor{enumerate item}{fg=astatered}
+\setbeamercolor{enumerate subitem}{fg=astatered}
+\setbeamercolor{enumerate subsubitem}{fg=astatered}
+
+% ---------------------------------------------------------------------------
+% Blocks
+% ---------------------------------------------------------------------------
+\setbeamercolor{block title}{fg=white, bg=astatedarkblue}
+\setbeamercolor{block body}{fg=black, bg=white}
+\setbeamercolor{block title alerted}{fg=white, bg=astatered}
+\setbeamercolor{block body alerted}{fg=black, bg=white}
+\setbeamercolor{block title example}{fg=white, bg=astatedarkblue!70!black}
+\setbeamercolor{block body example}{fg=black, bg=white}
+
+% ---------------------------------------------------------------------------
+% Header / footer
+% ---------------------------------------------------------------------------
+\setbeamercolor{headline}{fg=black, bg=astatelightgray}
+\setbeamercolor{footline}{fg=astatefootergray, bg=astatelightgray}
+\setbeamercolor{separation line}{bg=astatered}
+\setbeamercolor{lower separation line head}{bg=astatered}
+\setbeamercolor{upper separation line foot}{bg=astatered}
+
+% ---------------------------------------------------------------------------
+% TOC
+% ---------------------------------------------------------------------------
+\setbeamercolor{section in toc}{fg=astatedarkblue}
+\setbeamercolor{subsection in toc}{fg=astatered}
+\setbeamercolor{section in toc shaded}{fg=astategray}
+
+% ---------------------------------------------------------------------------
+% Captions
+% ---------------------------------------------------------------------------
+\setbeamercolor{caption}{fg=astatemediumgray}
+\setbeamercolor{caption name}{fg=astatedarkblue}
+
+% ---------------------------------------------------------------------------
+% Background
+% ---------------------------------------------------------------------------
+\setbeamercolor{background canvas}{bg=astatelightgray}
+\setbeamercolor{background}{bg=}
+
+\mode<all>

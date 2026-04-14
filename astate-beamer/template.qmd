@@ -1,0 +1,101 @@
+---
+title: "Presentation Title"
+subtitle: "Subtitle"
+author:
+  - name: Your Name
+    affiliations:
+      - Arkansas State University
+      - Your Department
+date: today
+date-format: "MMMM D, YYYY"
+conference: "Conference Name"
+footer: "Your Name | Conference Name"
+logo: astate.png
+format:
+  astate-beamer: default
+---
+
+## Introduction
+
+-   Bullet 1
+-   Bullet 2
+    -   Sub-bullet A
+    -   Sub-bullet B
+
+::: notes
+Speaker notes example.
+:::
+
+## Ordered List
+
+1.  First item
+2.  Second item
+3.  Third item
+
+## Two Columns
+
+:::: columns
+::: {.column width="48%"}
+Left column content
+:::
+
+::: {.column width="48%"}
+Right column content
+:::
+::::
+
+## Incremental Reveal
+
+Content before the pause.
+
+. . .
+
+Content revealed after.
+
+## Blockquote
+
+> The quality of a presentation often reflects the clarity of its
+> underlying ideas. Keep slides focused and let the speaker carry the
+> detail.
+
+## Code Block
+
+```r
+# Example R code
+model <- lm(y ~ x1 + x2, data = df)
+summary(model)
+```
+
+## Blocks
+
+::: {.block}
+### Standard Block
+Use for emphasis or a key takeaway.
+:::
+
+::: {.alertblock}
+### Alert Block
+Use sparingly — this is rendered in the A-State red.
+:::
+
+# A Section Break Slide
+
+# Thoughts / Questions?
+
+## Get in Touch
+
+:::: columns
+::: {.column width="42%"}
+![](astate.png){fig-align="center"}
+:::
+
+::: {.column width="55%"}
+
+```{=latex}
+\raggedleft
+{\color{astatered}\faPaperPlane}\; \href{mailto:your.email@astate.edu}{your.email@astate.edu}\\[0.15em]
+{\color{astatered}\faGlobe}\; \href{https://www.astate.edu}{www.astate.edu}
+```
+
+:::
+::::

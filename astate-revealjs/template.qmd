@@ -1,0 +1,114 @@
+---
+title: "Presentation Title"
+subtitle: "Subtitle"
+author:
+  - name: Your Name
+    affiliations:
+      - id: astate
+        name: Arkansas State University
+      - ref: astate
+        name: Your Department
+date: today
+date-format: long
+format:
+  astate-revealjs:
+    logo: astate.png
+    footer: "Your Name | Conference Name"
+toc: false
+---
+
+# *Section Title*
+
+## Introduction
+
+-   Bullet 1
+-   Bullet 2
+    -   Sub-bullet A
+
+::: notes
+Speaker notes example.
+:::
+
+## Ordered List
+
+::: incremental
+1.  First item
+2.  Second item
+3.  Third item
+:::
+
+## Two Columns {auto-animate="true"}
+
+::::: columns
+::: {.column width="50%"}
+Left column content
+:::
+
+::: {.column width="50%"}
+Right column content
+:::
+:::::
+
+## Incremental Reveal
+
+Content before the pause.
+
+. . .
+
+Content revealed after.
+
+## Blockquote
+
+> The quality of a presentation often reflects the clarity of its
+> underlying ideas. Keep slides focused and let the speaker carry the
+> detail.
+
+## An Aside
+
+Main slide content.
+
+::: aside
+Additional commentary of peripheral interest.
+:::
+
+## Footnotes
+
+-   Item one[^1]
+-   Item two
+-   Item three
+
+[^1]: Footnote text.
+
+## Tabsets {auto-animate="true"}
+
+::: panel-tabset
+### Tab A
+Content for Tab A
+
+### Tab B
+Content for Tab B
+:::
+
+# A Section Break Slide {.center background-color="#cc092f"}
+
+# Thoughts / Questions? {style="text-align: center;"}
+
+## Get in Touch
+
+<br>
+
+:::::: columns
+::: {.column width="50%"}
+![](astate.png){fig-align="center"}
+:::
+
+:::: {.column width="50%"}
+::: {style="text-align: right"}
+###### <i class="fa-solid fa-paper-plane fa-2xl"></i> &nbsp; [your.email\@astate.edu](mailto:your.email@astate.edu)
+
+<br>
+
+###### <i class="fa-solid fa-globe fa-2xl"></i> &nbsp; [www.astate.edu](https://www.astate.edu)
+:::
+::::
+::::::

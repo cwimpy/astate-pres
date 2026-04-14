@@ -1,0 +1,15 @@
+# Files excluded from `quarto use template` scaffolds.
+.gitignore               export-ignore
+.gitattributes           export-ignore
+.claude/                 export-ignore
+.DS_Store                export-ignore
+.Rhistory                export-ignore
+.Rproj.user/             export-ignore
+astate-revealjs.Rproj    export-ignore
+template.html            export-ignore
+template_files/          export-ignore
+_output/                 export-ignore
+
+# quarto-ext/fontawesome AND schochastics/academicons ship with the
+# scaffold because the Get in Touch slide uses {{< fa ... >}} and
+# {{< ai ... >}} shortcodes that require them.

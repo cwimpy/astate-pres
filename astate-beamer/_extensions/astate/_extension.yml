@@ -1,0 +1,25 @@
+title: AState Beamer
+author: Cameron Wimpy
+version: 0.1.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    beamer:
+      pdf-engine: xelatex
+      theme: AState
+      aspectratio: 169
+      fontsize: 14pt
+      navigation: empty
+      latex-auto-install: false
+      include-in-header:
+        - header.tex
+      filters:
+        - astate-authors.lua
+      # Ship the .sty theme files into the render dir so \usetheme{AState}
+      # finds them without the user needing TEXINPUTS tweaks.
+      format-resources:
+        - beamerthemeAState.sty
+        - beamercolorthemeAState.sty
+        - beamerfontthemeAState.sty
+        - beamerinnerthemeAState.sty
+        - beamerouterthemeAState.sty

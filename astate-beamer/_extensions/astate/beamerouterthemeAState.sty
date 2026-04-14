@@ -1,0 +1,128 @@
+%% beamerouterthemeAState.sty
+%% Outer theme for the Arkansas State University Beamer theme
+%% Mirrors the astate-revealjs SCSS theme
+
+\ProvidesPackage{beamerouterthemeAState}[2025/01/01 v1.0 AState Outer Theme]
+
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+\RequirePackage{calc}
+
+\mode<presentation>
+
+% ---------------------------------------------------------------------------
+% No headline — clean look (revealjs has no persistent header)
+% ---------------------------------------------------------------------------
+\defbeamertemplate*{headline}{AState}{}
+
+% ---------------------------------------------------------------------------
+% Frame title  (mirrors h2 in revealjs)
+%   - Bold black title text
+%   - 100px-wide red rule below (scaled: ~2.5cm at 40px base)
+% ---------------------------------------------------------------------------
+\defbeamertemplate*{frametitle}{AState}{%
+  \vskip0.3em
+  \begin{beamercolorbox}[wd=\textwidth, ht=1.6em, dp=0pt, leftskip=0pt]{frametitle}%
+    \usebeamerfont{frametitle}\usebeamercolor[fg]{frametitle}\insertframetitle%
+    \ifx\insertframesubtitle\@empty\else
+      \par\vskip0.15em
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}%
+    \fi
+  \end{beamercolorbox}%
+  % Red underline bar (mirrors h2::after in revealjs: width 100px, height 4px)
+  \vskip0.05em
+  {\color{astatered}\rule{2.6cm}{4pt}}%
+  \vskip0.15em
+}
+
+% ---------------------------------------------------------------------------
+% Footline  (mirrors the revealjs footer)
+%   Left:   custom footer text (\insertshortauthor or \astateFooter if set)
+%   Right:  logo + slide number (current/total)
+% ---------------------------------------------------------------------------
+
+% User-settable footer text — defaults to short author + short title
+\newcommand{\astateFooter}{%
+  \insertshortauthor\ifx\insertshorttitle\@empty\else:\space\insertshorttitle\fi%
+}
+
+% Command to override footer text, e.g. \setAStateFooter{Wimpy: EAC Data Summit}
+\newcommand{\setAStateFooter}[1]{\renewcommand{\astateFooter}{#1}}
+
+% Logo path — set via \setAStateLogo{astate.png}
+%   Places the logo:
+%     (a) bottom-right corner of every non-plain frame (via Beamer's \logo{})
+%     (b) bottom-right corner of the title slide (via TikZ in the title page template)
+%     (c) in the footer line at the right margin
+\newcommand{\astateLogoPath}{}
+\newcommand{\setAStateLogo}[1]{%
+  \renewcommand{\astateLogoPath}{#1}%
+  % Beamer's native logo mechanism (bottom-right on all non-plain frames)
+  \logo{\includegraphics[height=0.75cm]{#1}}%
+}
+
+\defbeamertemplate*{footline}{AState}{%
+  % Suppress footline on the title slide (frame 1): no slide number,
+  % no mini logo, no red rule — keeps the title page clean.
+  \ifnum\insertframenumber=1\relax\else
+    \begin{beamercolorbox}[wd=\paperwidth, ht=2.4ex, dp=1.2ex,
+                           leftskip=0.8em, rightskip=0.8em]{footline}%
+      \usebeamerfont{footline}%
+      % Left: footer text
+      \astateFooter%
+      \hfill%
+      % Right: logo (small, matches revealjs footer) + slide number
+      \ifx\astateLogoPath\@empty\else
+        \raisebox{-0.5ex}{\includegraphics[height=2.2ex]{\astateLogoPath}}\hspace{0.5em}%
+      \fi
+      \insertframenumber{}/\inserttotalframenumber%
+      \hspace{0.4em}%
+    \end{beamercolorbox}%
+    % Thin red separation line above footer
+    \begin{tikzpicture}[overlay]
+      \draw[astatered, line width=0.4pt]
+        (0, 0) -- (\paperwidth, 0);
+    \end{tikzpicture}%
+  \fi
+}
+
+% ---------------------------------------------------------------------------
+% Sidebar: none (clean)
+% ---------------------------------------------------------------------------
+\defbeamertemplate*{sidebar left}{AState}{}
+\defbeamertemplate*{sidebar right}{AState}{}
+
+% ---------------------------------------------------------------------------
+% Section page (mirrors the red background section break in revealjs:
+%   # Section Title {.center background-color="#cc092f"} )
+%
+% Use the \sectionframe command or the astateredframe environment.
+% ---------------------------------------------------------------------------
+
+% Helper: a standalone section-break frame with full red background
+% Usage: \sectionframe{Section Title}
+\newcommand{\sectionframe}[1]{%
+  {%
+    \setbeamercolor{background canvas}{bg=astatered}%
+    \setbeamercolor{normal text}{fg=white}%
+    \setbeamercolor{frametitle}{fg=white, bg=astatered}%
+    \begin{frame}[c]%
+      \centering
+      {\usebeamerfont{title}\color{white}#1\par}%
+      \vskip0.4em
+      {\color{white!70!astatered}\rule{2.6cm}{6pt}}%
+    \end{frame}%
+  }%
+}
+
+% Convenience environment (wraps frame + red bg)
+\newenvironment{astateredframe}{%
+  \setbeamercolor{background canvas}{bg=astatered}%
+  \setbeamercolor{normal text}{fg=white}%
+  \setbeamercolor{frametitle}{fg=white, bg=astatered}%
+  \begin{frame}%
+}{%
+  \end{frame}%
+}
+
+\mode<all>

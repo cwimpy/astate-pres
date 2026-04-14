@@ -1,0 +1,213 @@
+%% example.tex
+%% Example pure-LaTeX presentation using the AState Beamer theme.
+%% Mirrors template.qmd (the Quarto starter).
+%%
+%% COMPILE WITH:  make FILE=example tex
+%%   — or directly:  TEXINPUTS=.:_extensions/astate: xelatex example.tex  (run twice)
+%%
+%% Requires XeLaTeX (fontspec + fontawesome6 icons).
+
+\documentclass[aspectratio=169, 14pt]{beamer}
+
+% ---------------------------------------------------------------------------
+% Font selection (Inter body + Fraunces display) is handled by the AState
+% theme.  We only need fontspec loaded here so \IfFontExistsTF is available
+% for the Academicons probe below.
+% ---------------------------------------------------------------------------
+\usepackage{fontspec}
+
+% ---------------------------------------------------------------------------
+% Icons  (require XeLaTeX or LuaLaTeX)
+%   fontawesome6 — \faPaperPlane, \faGithub, \faLinkedin, \faXTwitter, \faOrcid ...
+%   academicons  — loaded as isolated font to avoid encoding conflicts
+% ---------------------------------------------------------------------------
+\usepackage{fontawesome6}
+% NOTE: \usepackage{academicons} is NOT used — it corrupts fontspec encodings
+% under XeLaTeX, garbling the main text font.  Instead, load the Academicons
+% font in isolation and define only the glyphs we need.
+\IfFontExistsTF{Academicons}{%
+  \newfontfamily\academiconsFont{Academicons}%
+  \newcommand{\aiDataverse}{{\academiconsFont\symbol{"E9F7}}}%
+}{% fallback if font is not installed
+  \newcommand{\aiDataverse}{\textsc{dv}}%
+}
+\usepackage{hyperref}
+
+% ---------------------------------------------------------------------------
+% Theme
+% ---------------------------------------------------------------------------
+\usetheme{AState}
+
+% Custom footer text (mirrors footer: "Wimpy: EAC Data Summit")
+\setAStateFooter{Wimpy: EAC Data Summit}
+
+% Logos
+\setAStateLogo{astate.png}
+
+% ---------------------------------------------------------------------------
+% Metadata — multiple co-authors via \authorblock{Name}{Affiliation}
+%   The optional [short] argument feeds the footer; use "et al." for 3+ authors.
+% ---------------------------------------------------------------------------
+\title{Title}
+\subtitle{Subtitle}
+
+\author[Wimpy, Smith \& Jones]{%
+  \authorblock{Cameron Wimpy}{%
+    Arkansas State University\\
+    Associate Professor and Chair of Government, Law \& Policy\\[-0.6em]
+    Director, Institute for Rural Initiatives%
+  }\\[0.3em]
+  % \authorblock{Jane Smith}{%
+  %   University of Example\\
+  %   Assistant Professor of Political Science%
+  % }\\[0.3em]
+  % \authorblock{Robert Jones}{%
+  %   Another University\\
+  %   Professor of Public Policy%
+  % }%
+}
+
+% Leave \institute{} empty when using \authorblock (affiliations live there)
+\institute{}
+\date{June 24, 2026}
+\conference{EAC Data Summit}
+
+% ---------------------------------------------------------------------------
+% Packages for demo content
+% ---------------------------------------------------------------------------
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{white},
+  frame=l,
+  framerule=4pt,
+  rulecolor=\color{astatered},
+  xleftmargin=6pt,
+  breaklines=true,
+}
+
+% ---------------------------------------------------------------------------
+% Document
+% ---------------------------------------------------------------------------
+\begin{document}
+
+% Title slide (plain suppresses header/footer; logo is added via TikZ overlay)
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ---- Section break (red background, white text) ---------------------------
+\sectionframe{\textit{Research Question}}
+
+% ---- Regular content frames -----------------------------------------------
+
+\begin{frame}{Test Slide 1}
+  \begin{itemize}
+    \item Bullet 1
+    \item Bullet 2
+      \begin{itemize}
+        \item Sub-bullet A
+        \item Sub-bullet B
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Test Slide 2}
+  \begin{enumerate}
+    \item First Item
+    \item Second Item
+    \item Third Item
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Test Slide 3 --- Two Columns}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      Some text in column 1
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      Some text in column 2
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Slide with a Pause}
+  Content before the pause.
+
+  \pause
+
+  Content after the pause.
+\end{frame}
+
+\begin{frame}{Blockquote}
+  \begin{quote}
+    \color{black}
+    His Majesty's Government view with favour the establishment in Palestine
+    of a national home for the Jewish people, and will use their best
+    endeavours to facilitate the achievement of this object, it being clearly
+    understood that nothing shall be done which may prejudice the civil and
+    religious rights of existing non-Jewish communities in Palestine\ldots
+  \end{quote}
+\end{frame}
+
+\begin{frame}[fragile]{Code Block}
+  \begin{lstlisting}[language=R]
+# Example R code
+model <- lm(y ~ x1 + x2, data = df)
+summary(model)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Blocks}
+  \begin{block}{Standard Block}
+    This mirrors a standard content block.
+  \end{block}
+  \vskip0.4em
+  \begin{alertblock}{Alert Block}
+    This is an alerted block, using the red brand color.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Footnotes}
+  \begin{itemize}
+    \item Green\footnote{A cool color.}
+    \item Brown
+    \item Purple
+  \end{itemize}
+\end{frame}
+
+% ---- Another section break ------------------------------------------------
+\sectionframe{A Section Break Slide}
+
+% ---- Questions slide -------------------------------------------------------
+\sectionframe{Thoughts / Questions?}
+
+% ---- Get in Touch (mirrors the revealjs closing slide) --------------------
+\begin{frame}{Get in Touch}
+  \begin{columns}[c]
+    % Left column: GLP logo
+    % Drop glp.png into this directory to enable the image
+    \begin{column}{0.42\textwidth}
+      \centering
+      \includegraphics[width=0.85\textwidth]{glp.png}
+    \end{column}
+    % Right column: contact details (right-aligned, mirrors revealjs layout)
+    \begin{column}{0.55\textwidth}
+      \raggedleft
+      {\color{astatered}\faPaperPlane}\;%
+        \href{mailto:cwimpy@astate.edu}{cwimpy@astate.edu}\\[0.15em]
+      {\color{astatered}\aiDataverse}\;%
+        \href{https://dataverse.harvard.edu/dataverse/cwimpy}{@cwimpy}\\[0.15em]
+      {\color{astatered}\faGithub}\;%
+        \href{https://github.com/cwimpy}{@cwimpy}\\[0.15em]
+      {\color{astatered}\faLinkedin}\;%
+        \href{https://linkedin.com/in/cwimpy}{@cwimpy}\\[0.15em]
+      {\color{astatered}\faXTwitter}\;%
+        \href{https://x.com/camwimpy}{@camwimpy}\\[0.15em]
+      {\color{astatered}\faOrcid}\;%
+        \href{https://orcid.org/0000-0002-2049-5229}{0000-0002-2049-5229}%
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

@@ -10,8 +10,8 @@ author:
       - Director, Institute for Rural Initiatives
 date: "June 24, 2026"
 date-format: "MMMM D, YYYY"
-conference: "EAC Data Summit"
-footer: "Wimpy: EAC Data Summit"
+conference: "Conference Name"
+footer: "Wimpy: Conference Name"
 logo: iri.png
 format:
   astate-beamer: default
