@@ -27,6 +27,13 @@ export TEXINPUTS := .:$(EXTDIR):$(TEXINPUTS)
 # Auxiliary extensions that xelatex / beamer / quarto leave behind
 AUX_EXT = aux log nav out snm toc vrb fdb_latexmk fls synctex.gz
 
+# Theme .sty files that Quarto's format-resources copies into the project
+# root at render time — we sweep these up after a successful build so they
+# don't clutter the working dir.
+STY_FILES = beamerthemeAState.sty beamercolorthemeAState.sty \
+            beamerfontthemeAState.sty beamerinnerthemeAState.sty \
+            beamerouterthemeAState.sty
+
 .PHONY: all tex qmd clean cleanall
 
 # --- Auto-detect: prefer .qmd if present, else fall back to .tex ------------
@@ -54,14 +61,17 @@ qmd: $(FILE).qmd
 	@mkdir -p $(OUTDIR)
 	quarto render $(FILE).qmd --output-dir $(OUTDIR)
 	@rm -rf $(FILE)_files .quarto
+	@rm -f $(STY_FILES)
+	@rm -f $(addprefix $(FILE)., $(AUX_EXT))
 	@echo ""
 	@echo "✓ $(OUTDIR)/$(FILE).pdf is ready."
 
 # --- Housekeeping -----------------------------------------------------------
 clean:
 	rm -f $(addprefix $(FILE)., $(AUX_EXT))
+	rm -f $(STY_FILES)
 	rm -rf $(FILE)_files .quarto
-	@echo "✓ Auxiliary files removed. $(OUTDIR)/ kept."
+	@echo "✓ Auxiliary and stray .sty files removed. $(OUTDIR)/ kept."
 
 cleanall: clean
 	rm -rf $(OUTDIR)
