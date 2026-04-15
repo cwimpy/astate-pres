@@ -53,8 +53,10 @@
   }%
   \ifx&#3&\else%
     \\[0.05em]%
-    {\usebeamerfont{institute}\usebeamercolor[fg]{institute}%
-     \linespread{0.82}\selectfont #3}%
+    {\usebeamercolor[fg]{institute}%
+     \footnotesize\itshape
+     \renewcommand{\arraystretch}{0.9}%
+     \begin{tabular}[t]{@{}l@{}}#3\end{tabular}}%
   \fi%
 }
 
