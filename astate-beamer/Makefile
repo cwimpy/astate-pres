@@ -72,6 +72,7 @@ qmd: $(FILE).qmd
 	@rm -rf $(FILE)_files .quarto
 	@rm -f $(STY_FILES)
 	@rm -f $(addprefix $(FILE)., $(AUX_EXT))
+	@find $(OUTDIR) -maxdepth 1 -type f ! -name '*.pdf' -delete
 	@echo ""
 	@echo "✓ $(OUTDIR)/$(FILE).pdf is ready."
 
