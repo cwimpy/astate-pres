@@ -15,7 +15,7 @@ Policy) and IRI (Institute for Rural Initiatives).
 | `astate-revealjs-iri` | revealjs  | IRI                                     | `quarto use template cwimpy/astate-pres/astate-revealjs-iri` |
 
 All six share the same typography (Inter body + Fraunces display), A-State
-brand colors (red `#CC092F`, navy `#01364C`), author/ORCID/affiliation
+brand colors (red `#CC092F`, black `#000000`), author/ORCID/affiliation
 metadata handling, and `Makefile` build workflow. Variants differ only in
 which logo image and contact slide content ship with the template.
 
