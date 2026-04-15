@@ -84,7 +84,7 @@ function Meta(meta)
         orcid = pandoc.utils.stringify(author.orcid)
       end
 
-      local affil_str = table.concat(affil_lines, "\\\\\n    ")
+      local affil_str = table.concat(affil_lines, "\\\\[0.05em]\n    ")
       table.insert(blocks, string.format(
         "\\authorblock[%s]{%s}{%%\n    %s%%\n  }", orcid, name, affil_str))
     end
